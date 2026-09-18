@@ -1,0 +1,216 @@
+sources:
+  dario-amodei:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://www.darioamodei.com/
+      kind: index
+      status: ok
+    - url: https://www.anthropic.com/news
+      kind: index
+      authored_by_subject: false
+      status: ok
+      note: company posts; only score ones he authored or signed
+  yann-lecun:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: http://yann.lecun.com/
+      kind: index
+      status: ok
+  geoffrey-hinton:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://www.cs.toronto.edu/~hinton/
+      kind: index
+      status: ok
+      note: mostly papers; his positions live in talks and interviews
+  sam-altman:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://blog.samaltman.com/
+      kind: index
+      status: unverified
+  andrej-karpathy:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://karpathy.bearblog.dev/
+      kind: index
+      status: unverified
+    - url: https://karpathy.github.io/
+      kind: index
+      status: unverified
+  andrew-ng:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://www.deeplearning.ai/the-batch/
+      kind: index
+      status: unverified
+      note: The Batch; his letters are authored, the news items are not
+  demis-hassabis:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://deepmind.google/discover/blog/
+      kind: index
+      status: unverified
+  mustafa-suleyman:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://mustafa-suleyman.ai/
+      kind: index
+      status: unverified
+    - url: https://microsoft.ai/news/
+      kind: index
+      authored_by_subject: false
+      status: unverified
+  fei-fei-li:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://www.worldlabs.ai/blog
+      kind: index
+      status: unverified
+    - url: https://hai.stanford.edu/news
+      kind: index
+      status: unverified
+  ilya-sutskever:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://ssi.inc/
+      kind: index
+      status: unverified
+      note: very low volume by design; silence is itself a data point
+  sundar-pichai:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://blog.google/technology/ai/
+      kind: index
+      status: unverified
+  satya-nadella:
+    tier: 1
+    authored_by_subject: false
+    seeds: []
+  mark-zuckerberg:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://about.fb.com/news/
+      kind: index
+      status: unverified
+    - url: https://ai.meta.com/blog/
+      kind: index
+      status: unverified
+  jensen-huang:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://blogs.nvidia.com/
+      kind: index
+      status: unverified
+  elon-musk:
+    tier: 1
+    authored_by_subject: true
+    seeds: []
+  mira-murati:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://thinkingmachines.ai/blog/
+      kind: index
+      status: unverified
+  daniela-amodei:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://www.anthropic.com/news
+      kind: index
+      status: ok
+  alexandr-wang:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://ai.meta.com/blog/
+      kind: index
+      status: ok
+  yoshua-bengio:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://yoshuabengio.org/
+      kind: index
+      status: unverified
+  liang-wenfeng:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://finance.sina.com.cn/tech/2025-01-26/doc-inehhksk9178057.shtml
+      kind: article
+      language: zh
+      source_type: interview
+      tier: 2
+      authored_by_subject: true
+      status: ok
+      note: 暗涌Waves interview, reposted by Sina Finance. Original 36kr page is a JS app and cannot be
+        fetched; this is the accessible copy of the same text.
+    - url: https://hub.baai.ac.cn/view/42544
+      kind: article
+      language: zh
+      source_type: interview
+      tier: 2
+      authored_by_subject: true
+      status: ok
+      note: Second independent copy of the same interview, for corroboration.
+  eddie-wu:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://www.alibabagroup.com/en-US/news
+      kind: index
+      status: unverified
+  kai-fu-lee:
+    tier: 1
+    authored_by_subject: false
+    seeds:
+    - url: https://www.sinovationventures.com/blog
+      kind: index
+      status: unverified
+    - url: https://www.01.ai/
+      kind: index
+      status: ok
+      authored_by_subject: false
+  donald-trump:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://www.whitehouse.gov/presidential-actions/
+      kind: index
+      status: unverified
+  gavin-newsom:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://www.gov.ca.gov/newsroom/
+      kind: index
+      status: unverified
+  nancy-pelosi:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://pelosi.house.gov/news/press-releases
+      kind: index
+      status: unverified
+  scott-wiener:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://sd11.senate.ca.gov/news
+      kind: index
+      status: unverified

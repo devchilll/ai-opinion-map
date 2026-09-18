@@ -1,0 +1,23 @@
+# Environments and build output
+.venv/
+__pycache__/
+*.pyc
+web/node_modules/
+web/.next/
+web/out/
+.DS_Store
+
+# THE CORPUS IS DELIBERATELY NOT PUBLISHED.
+#
+# data/raw/ holds verbatim copies of fetched pages and data/db/ holds their full
+# extracted text, including news articles and interview transcripts we do not own.
+# Republishing those would be redistributing other people's copyrighted work --
+# and it contradicts this project's own rule, which is to keep the URL and a short
+# quotation, never the article body.
+#
+# What IS published: the code, the registries (who/what/where we fetch), the
+# verified events, portrait credits, and derived coordinates. Anyone can rebuild
+# the corpus from those by running the collectors themselves.
+data/raw/
+data/db/
+data/gold/*.jsonl

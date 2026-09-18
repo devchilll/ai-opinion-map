@@ -1,0 +1,308 @@
+people:
+- person_id: elon-musk
+  display_name: Elon Musk
+  headline: true
+  role: CEO, xAI / SpaceX / Tesla
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: sam-altman
+  display_name: Sam Altman
+  headline: true
+  role: CEO, OpenAI
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: dario-amodei
+  display_name: Dario Amodei
+  headline: true
+  role: Co-founder and CEO, Anthropic
+  role_verified_on: 2026-09-16
+  evidence_starts: 2021-01
+  notes: Materializes in 2021; earlier OpenAI-era material exists but is sparse.
+  entity_kind: person
+- person_id: demis-hassabis
+  display_name: Demis Hassabis
+  headline: true
+  role: CEO, Google DeepMind
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: jensen-huang
+  display_name: Jensen Huang
+  headline: true
+  role: CEO, Nvidia
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: mark-zuckerberg
+  display_name: Mark Zuckerberg
+  headline: true
+  role: CEO, Meta
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: sundar-pichai
+  display_name: Sundar Pichai
+  headline: true
+  role: CEO, Alphabet
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: satya-nadella
+  display_name: Satya Nadella
+  headline: true
+  role: CEO, Microsoft
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: geoffrey-hinton
+  display_name: Geoffrey Hinton
+  headline: true
+  role: Emeritus, University of Toronto
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: yann-lecun
+  display_name: Yann LeCun
+  headline: true
+  role: Executive Chair, Advanced Machine Intelligence Labs (left Meta Nov 2025)
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: ilya-sutskever
+  display_name: Ilya Sutskever
+  headline: true
+  role: CEO, Safe Superintelligence
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: andrej-karpathy
+  display_name: Andrej Karpathy
+  headline: true
+  role: UNVERIFIED - reportedly paused Eureka Labs in 2026; confirm before publishing
+  role_verified_on: null
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: fei-fei-li
+  display_name: Fei-Fei Li
+  headline: true
+  role: Co-founder and CEO, World Labs; Stanford
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: andrew-ng
+  display_name: Andrew Ng
+  headline: true
+  role: Founder, DeepLearning.AI; Managing General Partner, AI Fund
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: mustafa-suleyman
+  display_name: Mustafa Suleyman
+  headline: true
+  role: CEO, Microsoft AI
+  role_verified_on: 2026-09-16
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: the-public
+  display_name: US public
+  headline: true
+  entity_kind: public
+  role: Nationally representative survey series
+  role_verified_on: 2026-09-16
+  evidence_starts: 2018-01
+  axes_allowed:
+  - Y
+  - W
+  - Z
+  region: US
+- person_id: mira-murati
+  display_name: Mira Murati
+  headline: true
+  role: CEO, Thinking Machines Lab
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2022-01
+  notes: TIME100 AI 2026 cover subject.
+  entity_kind: person
+- person_id: daniela-amodei
+  display_name: Daniela Amodei
+  headline: true
+  role: Co-founder and President, Anthropic
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2021-01
+  notes: Dario's sister and Anthropic's co-founder; speaks on commercialisation and policy.
+  entity_kind: person
+- person_id: alexandr-wang
+  display_name: Alexandr Wang
+  headline: true
+  role: Chief AI Officer, Meta; leads Meta Superintelligence Labs
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2020-01
+  entity_kind: person
+- person_id: yoshua-bengio
+  display_name: Yoshua Bengio
+  headline: true
+  role: Professor, Mila; international AI evaluation work
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2017-01
+  entity_kind: person
+- person_id: liang-wenfeng
+  display_name: Liang Wenfeng
+  headline: true
+  role: Founder, DeepSeek
+  role_verified_on: null
+  evidence_starts: 2023-01
+  notes: UNVERIFIED role. Speaks rarely; evidence will be sparse and that is honest.
+  entity_kind: person
+- person_id: eddie-wu
+  display_name: Eddie Wu
+  headline: true
+  role: CEO, Alibaba
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2023-01
+  entity_kind: person
+- person_id: kai-fu-lee
+  display_name: Kai-Fu Lee
+  headline: true
+  role: Chairman and CEO, Sinovation Ventures; founder, 01.AI
+  role_verified_on: null
+  evidence_starts: 2017-01
+  notes: Highest English-language volume of any China-based figure.
+  entity_kind: person
+- person_id: donald-trump
+  display_name: Donald Trump
+  headline: true
+  entity_kind: policy
+  role: President of the United States
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2023-01
+  axes_allowed:
+  - X
+  - Y
+- person_id: gavin-newsom
+  display_name: Gavin Newsom
+  headline: true
+  entity_kind: policy
+  role: Governor of California
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2023-01
+  axes_allowed:
+  - X
+  - Y
+  notes: Governor, not state senator. Signed and vetoed the California AI bills.
+- person_id: nancy-pelosi
+  display_name: Nancy Pelosi
+  headline: true
+  entity_kind: policy
+  role: Member of Congress (D-CA)
+  role_verified_on: null
+  evidence_starts: 2023-01
+  axes_allowed:
+  - X
+  - Y
+- person_id: scott-wiener
+  display_name: Scott Wiener
+  headline: false
+  entity_kind: policy
+  role: California State Senator; authored SB 1047
+  role_verified_on: null
+  evidence_starts: 2024-01
+  axes_allowed:
+  - X
+  - Y
+  notes: The actual CA state senator on AI. Lower name recognition, far higher signal.
+- person_id: david-sacks
+  display_name: David Sacks
+  headline: false
+  entity_kind: policy
+  role: White House AI & crypto czar Dec 2024 - Mar 2026
+  role_verified_on: '2026-09-16'
+  evidence_starts: 2024-12
+  axes_allowed:
+  - X
+  - Y
+  notes: 'Time-bounded role: the clearest demo of why the timeline matters.'
+- person_id: masayoshi-son
+  display_name: Masayoshi Son
+  headline: true
+  entity_kind: person
+  role: Chairman and CEO, SoftBank Group
+  role_verified_on: null
+  evidence_starts: 2017-01
+  notes: UNVERIFIED role. Largest single capital allocator in the cast.
+- person_id: marc-andreessen
+  display_name: Marc Andreessen
+  headline: true
+  entity_kind: person
+  role: Co-founder, Andreessen Horowitz
+  role_verified_on: null
+  evidence_starts: 2017-01
+- person_id: ben-horowitz
+  display_name: Ben Horowitz
+  headline: false
+  entity_kind: person
+  role: Co-founder, Andreessen Horowitz
+  role_verified_on: null
+  evidence_starts: 2020-01
+- person_id: eu-public
+  display_name: EU public
+  headline: true
+  entity_kind: public
+  region: EU
+  role: Eurobarometer and national survey series
+  role_verified_on: null
+  evidence_starts: 2019-01
+  axes_allowed:
+  - Y
+  - W
+  - Z
+- person_id: china-public
+  display_name: China public
+  headline: true
+  entity_kind: public
+  region: CN
+  role: Cross-national survey series covering China
+  role_verified_on: null
+  evidence_starts: 2021-01
+  axes_allowed:
+  - Y
+  - W
+  - Z
+  notes: Thinnest and least comparable series of the four. Expect wide uncertainty, and label it as cross-national
+    polling rather than domestic polling.
+- person_id: world-public
+  display_name: Global public
+  headline: true
+  entity_kind: public
+  region: WORLD
+  role: Multi-country survey series (e.g. Ipsos global studies)
+  role_verified_on: null
+  evidence_starts: 2021-01
+  axes_allowed:
+  - Y
+  - W
+  - Z
+  notes: A weighted aggregate across countries; the weighting must be published, never silently averaged.
+bench:
+- jack-clark
+- shane-legg
+- jan-leike
+- stuart-russell
+- max-tegmark
+- eliezer-yudkowsky
+- gary-marcus
+- emily-bender
+- timnit-gebru
+- arthur-mensch
+- clem-delangue
+- aravind-srinivas
+- mark-chen
+- greg-brockman
+- helen-toner
+- eric-schmidt
+- reid-hoffman
+- lisa-su
+policy:
+- jd-vance
+- michael-kratsios

@@ -1,0 +1,276 @@
+events:
+- id: transformers-paper
+  date: 2017-06-12
+  title: Attention Is All You Need published
+  summary: The transformer architecture is introduced, underpinning essentially every frontier model that
+    follows.
+  category: Research
+  importance: 5
+  people: []
+  sources:
+  - https://arxiv.org/abs/1706.03762
+  - https://research.google/pubs/attention-is-all-you-need/
+  verified: true
+- id: gpt3-release
+  date: 2020-05-28
+  title: GPT-3 released
+  summary: Scaling to 175B parameters makes few-shot prompting viable and reframes the field around scale.
+  category: Models
+  importance: 5
+  people:
+  - sam-altman
+  sources:
+  - https://arxiv.org/abs/2005.14165
+  - https://openai.com/index/gpt-3-apps/
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/gpt-3-apps/
+- id: anthropic-founded
+  date: 2021-01-01
+  date_precision: quarter
+  title: Anthropic founded
+  summary: Dario and Daniela Amodei leave OpenAI and found Anthropic.
+  category: Companies
+  importance: 4
+  people:
+  - dario-amodei
+  - daniela-amodei
+  sources:
+  - https://www.anthropic.com/company
+  - https://en.wikipedia.org/wiki/Anthropic
+  verified: true
+- id: chatgpt-launch
+  date: 2022-11-30
+  title: ChatGPT launches
+  summary: A research preview becomes the fastest-adopted consumer software product to date and moves
+    AI into mainstream politics.
+  category: Commercial
+  importance: 5
+  people:
+  - sam-altman
+  sources:
+  - https://openai.com/index/chatgpt/
+  - https://en.wikipedia.org/wiki/ChatGPT
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/chatgpt/
+- id: gpt4-release
+  date: 2023-03-14
+  title: GPT-4 released
+  summary: A large multimodal model released with a system card and no architecture details, formalising
+    closed frontier release.
+  category: Models
+  importance: 5
+  people:
+  - sam-altman
+  sources:
+  - https://openai.com/index/gpt-4-research/
+  - https://arxiv.org/abs/2303.08774
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/gpt-4-research/
+- id: pause-letter
+  date: 2023-03-22
+  title: Pause Giant AI Experiments open letter
+  summary: An open letter calls for a six-month pause on systems more powerful than GPT-4, signed by Musk
+    and Bengio among thousands of others.
+  category: Policy
+  importance: 4
+  people:
+  - elon-musk
+  - yoshua-bengio
+  sources:
+  - https://futureoflife.org/open-letter/pause-giant-ai-experiments/
+  - https://en.wikipedia.org/wiki/Pause_Giant_AI_Experiments:_An_Open_Letter
+  verified: true
+- id: hinton-leaves-google
+  date: 2023-05-01
+  title: Hinton leaves Google to speak on AI risk
+  summary: Hinton departs Google saying he wants to discuss the dangers of AI freely. The clearest single
+    trajectory change in the cast.
+  category: Leadership
+  importance: 5
+  people:
+  - geoffrey-hinton
+  sources:
+  - https://en.wikipedia.org/wiki/Geoffrey_Hinton
+  - https://www.bbc.com/news/world-us-canada-65452940
+  verified: true
+- id: senate-hearing-altman
+  date: 2023-05-16
+  title: Altman testifies before the US Senate
+  summary: Altman endorses licensing for frontier systems in sworn testimony.
+  category: Policy
+  importance: 4
+  people:
+  - sam-altman
+  sources:
+  - https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-rules-for-artificial-intelligence
+  - https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence
+  verified: true
+- id: llama2-open-weights
+  date: 2023-07-18
+  title: Llama 2 released with open weights
+  summary: Meta ships a capable model under a community licence, making open weights a mainstream commercial
+    strategy.
+  category: Models
+  importance: 5
+  people:
+  - mark-zuckerberg
+  - yann-lecun
+  sources:
+  - https://ai.meta.com/blog/llama-2/
+  - https://arxiv.org/abs/2307.09288
+  verified: true
+- id: biden-ai-eo
+  date: 2023-10-30
+  title: US executive order on AI signed
+  summary: The Biden administration issues a sweeping AI executive order including compute-threshold reporting
+    requirements.
+  category: Policy
+  importance: 5
+  people: []
+  sources:
+  - https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/
+  - https://en.wikipedia.org/wiki/Executive_Order_14110
+  verified: true
+- id: openai-board-crisis
+  date: 2023-11-17
+  title: Altman removed, then reinstated at OpenAI
+  summary: The board removes Altman; he returns within days after employee and investor pressure. Sutskever's
+    role becomes a central subplot.
+  category: Leadership
+  importance: 5
+  people:
+  - sam-altman
+  - ilya-sutskever
+  sources:
+  - https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI
+  - https://openai.com/index/openai-announces-leadership-transition/
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/openai-announces-leadership-transition/
+- id: eu-ai-act
+  date: 2024-03-13
+  title: EU AI Act adopted
+  summary: The European Parliament adopts the first comprehensive AI law, introducing risk tiers and obligations
+    for general-purpose models.
+  category: Policy
+  importance: 5
+  people: []
+  sources:
+  - https://artificialintelligenceact.eu/
+  - https://en.wikipedia.org/wiki/Artificial_Intelligence_Act
+  verified: true
+- id: sutskever-ssi
+  date: 2024-06-19
+  title: Sutskever founds Safe Superintelligence
+  summary: Sutskever launches SSI with a single stated product and a deliberate absence of commercial
+    releases.
+  category: Companies
+  importance: 4
+  people:
+  - ilya-sutskever
+  sources:
+  - https://ssi.inc/
+  - https://en.wikipedia.org/wiki/Safe_Superintelligence_Inc.
+  verified: true
+- id: sb1047-veto
+  date: 2024-09-29
+  title: Newsom vetoes California SB 1047
+  summary: California's frontier-model safety bill, authored by Senator Scott Wiener, is vetoed after
+    heavy industry lobbying.
+  category: Policy
+  importance: 5
+  people:
+  - gavin-newsom
+  - scott-wiener
+  sources:
+  - https://en.wikipedia.org/wiki/Safe_and_Secure_Innovation_for_Frontier_Artificial_Intelligence_Models_Act
+  - https://www.gov.ca.gov/2024/09/29/governor-newsom-announces-new-initiatives-to-advance-safe-and-responsible-ai-protect-californians/
+  verified: true
+- id: hinton-nobel
+  date: 2024-10-08
+  title: Hinton shares the Nobel Prize in Physics
+  summary: Hopfield and Hinton are recognised for foundational work on neural networks, amplifying Hinton's
+    risk warnings.
+  category: Research
+  importance: 4
+  people:
+  - geoffrey-hinton
+  sources:
+  - https://www.nobelprize.org/prizes/physics/2024/summary/
+  - https://en.wikipedia.org/wiki/Geoffrey_Hinton
+  verified: true
+- id: deepseek-r1
+  date: 2025-01-20
+  title: DeepSeek R1 released
+  summary: A Chinese lab ships a competitive open-weight reasoning model, triggering a US market reaction
+    and an export-controls argument.
+  category: Models
+  importance: 5
+  people:
+  - liang-wenfeng
+  - dario-amodei
+  sources:
+  - https://arxiv.org/abs/2501.12948
+  - https://en.wikipedia.org/wiki/DeepSeek
+  verified: true
+- id: lecun-leaves-meta
+  date: 2025-11-19
+  title: LeCun leaves Meta
+  summary: Meta's chief AI scientist departs to found a world-models startup, later raising one of the
+    largest seed rounds on record.
+  category: Leadership
+  importance: 4
+  people:
+  - yann-lecun
+  - mark-zuckerberg
+  sources:
+  - https://www.cnbc.com/2025/11/19/meta-chief-ai-scientist-yann-lecun-is-leaving-the-company-.html
+  - https://en.wikipedia.org/wiki/Yann_LeCun
+  verified: true
+- id: erdos-conjecture-disproved
+  date: 2026-05-20
+  title: AI model disproves an Erdos conjecture
+  summary: OpenAI reports that an internal model produced the core ideas and a draft proof, which mathematicians
+    then verified and published.
+  category: Research
+  importance: 5
+  people:
+  - sam-altman
+  sources:
+  - https://openai.com/index/ten-advances-in-mathematics/
+  - https://www.quantamagazine.org/the-ai-revolution-in-math-has-arrived-20260413/
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/ten-advances-in-mathematics/
+- id: openai-agent-cyberattacks
+  date: 2026-08-10
+  title: OpenAI agents break containment and hack Hugging Face
+  summary: During an internal evaluation, agentic models autonomously compromised Hugging Face and four
+    other services over four days with no human operator. OpenAI published a technical report and paused
+    RL on its latest models.
+  category: Models
+  importance: 5
+  people:
+  - sam-altman
+  sources:
+  - https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks
+  - https://techcrunch.com/2026/08/10/as-ai-led-attacks-multiply-openai-launches-a-new-cyber-model/
+  - https://openai.com/index/hugging-face-model-evaluation-security-incident/
+  verified: true
+  blocked_sources:
+  - https://openai.com/index/hugging-face-model-evaluation-security-incident/
+- id: ban-asi-act
+  date: 2026-09-03
+  title: Ban Artificial Superintelligence Act introduced
+  summary: Senator Bernie Sanders and Representative Greg Casar introduce a bill proposing a pause on
+    domestic frontier AI development.
+  category: Policy
+  importance: 4
+  people: []
+  sources:
+  - https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks
+  - https://techcrunch.com/2026/08/10/as-ai-led-attacks-multiply-openai-launches-a-new-cyber-model/
+  verified: true

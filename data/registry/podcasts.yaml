@@ -1,0 +1,6 @@
+# Long-form interview shows that publish full transcripts on public episode pages.
+# Probed 2026-09-17. Episode pages are ordinary web pages; no downloader involved.
+feeds:
+  Dwarkesh Podcast: https://api.substack.com/feed/podcast/69345.rss
+  Lex Fridman Podcast: https://lexfridman.com/feed/podcast/
+  Hard Fork: https://feeds.simplecast.com/l2i9YnTd
