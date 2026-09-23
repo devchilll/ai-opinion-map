@@ -57,24 +57,28 @@ function monthFraction(date: string, months: string[]): number {
 
 /** null = do not draw. `free` lists axes that are structurally undefined for this
  *  entity, which render as a line through that dimension instead of a false point. */
-let ACTIVE: [AxisKey, AxisKey, AxisKey | null] = ["X", "Y", "Z"];
+type Active = [AxisKey, AxisKey, AxisKey | null];
+let ACTIVE: Active = ["X", "Y", "Z"];   // mirror of the current view for helpers that lack props
 
-function coords(p: Person, i: number): { pos: [number, number, number]; free: string[] } | null {
+function coords(p: Person, i: number, active: Active = ACTIVE):
+  { pos: [number, number, number]; free: string[] } | null {
   const out: number[] = [];
   const free: string[] = [];
-  for (const a of ACTIVE) {
+  for (const a of active) {
     if (a === null) { out.push(0); continue; }               // flattened dimension in a 2D view
     if (!p.axes_allowed.includes(a)) { out.push(0); free.push(a); continue; }
     const cell = p.axes[a]?.[i];
     if (!cell) return null;                                  // allowed but under-evidenced
     out.push(cell[0] * SCALE);
   }
+  const applicable = active.filter((a) => a !== null && p.axes_allowed.includes(a));
+  if (applicable.length === 0) return null;                  // nothing to say in this view
   return { pos: [out[0], out[1], out[2]], free };
 }
 
 /** Which allowed axes have no evidence at month i. Empty = renderable. */
-function missingAxes(p: Person, i: number): string[] {
-  return (ACTIVE.filter(Boolean) as AxisKey[]).filter((a) => p.axes_allowed.includes(a) && !p.axes[a]?.[i]);
+function missingAxes(p: Person, i: number, active: Active = ACTIVE): string[] {
+  return (active.filter(Boolean) as AxisKey[]).filter((a) => p.axes_allowed.includes(a) && !p.axes[a]?.[i]);
 }
 
 /** Nearest month where this person renders, or null. */
@@ -240,12 +244,14 @@ export default function BeliefMap({ data }: { data: Positions }) {
     [data.people, q]
   );
   const month = data.months[i];
-  const visible = useMemo(() => headline.filter((p) => coords(p, i)), [headline, i]);
+  const active = VIEWS[view].axes;
+  const is2d = active[2] === null;
+  const visible = useMemo(() => headline.filter((p) => coords(p, i, active)), [headline, i, active]);
   const hidden = useMemo(
-    () => headline.filter((p) => !coords(p, i))
-                  .map((p) => ({ p, missing: missingAxes(p, i),
+    () => headline.filter((p) => !coords(p, i, active))
+                  .map((p) => ({ p, missing: missingAxes(p, i, active),
                                  before: p.enters_at ? month < p.enters_at : false })),
-    [headline, i, month]
+    [headline, i, month, active]
   );
   const searchHits = useMemo(
     () => (q ? data.people.filter((p) => p.name.toLowerCase().includes(q)) : []),
@@ -359,7 +365,8 @@ export default function BeliefMap({ data }: { data: Positions }) {
       </div>
 
       <Canvas
-        camera={{ position: [16, 7.5, 9.5], fov: 40 }}
+        key={is2d ? "2d" : "3d"}
+        camera={is2d ? { position: [0, 0, 19], fov: 40 } : { position: [16, 7.5, 9.5], fov: 40 }}
         gl={{ preserveDrawingBuffer: true, antialias: true }}
         onPointerMissed={() => setPicked(null)}
       >
@@ -385,8 +392,8 @@ export default function BeliefMap({ data }: { data: Positions }) {
           ))}
 
         </Suspense>
-        <OrbitControls enablePan={false} autoRotate={spin && !picked}
-                       autoRotateSpeed={0.22} minDistance={8} maxDistance={30} />
+        <OrbitControls enablePan={false} enableRotate={!is2d} autoRotate={spin && !picked && !is2d}
+                       autoRotateSpeed={0.22} minDistance={8} maxDistance={34} />
       </Canvas>
 
       <div className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-[#03070c]
