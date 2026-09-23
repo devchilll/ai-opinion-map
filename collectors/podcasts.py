@@ -37,12 +37,21 @@ MIN_GUEST_WORDS = 400
 TIMESTAMP = re.compile(r"^\(?\d{1,2}:\d{2}(?::\d{2})?\)?\s*[-–—]?\s*")
 
 
+# "Andrej Karpathy 00:00:07" -- newer Dwarkesh transcripts put the time on the
+# speaker line. Strip it so the name is recognised as a label.
+TRAILING_TS = re.compile(r"\s+\(?\d{1,2}:\d{2}(?::\d{2})?\)?$")
+
+
+def _label(line: str) -> str:
+    return TRAILING_TS.sub("", line).strip()
+
+
 def speaker_labels(lines: list[str], *, min_turns: int = 4) -> set[str]:
     """Standalone short lines repeated many times are speaker names."""
     counts = Counter(
-        l for l in lines
-        if 3 < len(l) < 40 and l.count(" ") <= 3 and l[:1].isupper()
-        and not l.endswith((".", "?", "!", ":")) and not TIMESTAMP.match(l)
+        _label(l) for l in lines
+        if 3 < len(_label(l)) < 40 and _label(l).count(" ") <= 3 and l[:1].isupper()
+        and not _label(l).endswith((".", "?", "!", ":")) and not TIMESTAMP.match(l)
     )
     return {name for name, n in counts.items() if n >= min_turns}
 
@@ -63,8 +72,8 @@ def guest_turns(text: str, guest_name: str) -> tuple[str, str | None]:
     out: list[str] = []
     current: str | None = None
     for l in lines:
-        if l in labels:
-            current = l
+        if _label(l) in labels:
+            current = _label(l)
             continue
         if current == matched and not TIMESTAMP.match(l):
             out.append(l)
@@ -85,7 +94,7 @@ def is_guest(title: str, person_name: str) -> bool:
 
 
 def collect(feeds: dict[str, str], people: list[dict], fetcher: Fetcher,
-            *, limit_per_person: int = 4) -> list[Document]:
+            *, limit_per_person: int = 8) -> list[Document]:
     docs: list[Document] = []
     taken: Counter = Counter()
 

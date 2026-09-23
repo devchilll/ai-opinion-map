@@ -90,3 +90,26 @@ def test_contradictions_are_found_not_resolved():
     pairs = find_contradictions([c("a", "d1", date(2025, 1, 1), 3),
                                  c("b", "d2", date(2025, 2, 1), -2)])
     assert pairs and pairs[0][2] == 5
+
+
+def test_window_widens_when_sparse_and_reports_staleness():
+    """A 2024 interview is the best evidence for 2026 if nothing newer exists --
+    but the output must say how stale it is."""
+    claims = [c("a", "d1", date(2024, 11, 1), 2), c("b", "d2", date(2025, 2, 1), 2)]
+    out = compute(claims, date(2026, 9, 1))
+    assert out.value is not None
+    assert out.window_months >= 24
+    assert out.newest_age_months > 12
+    assert out.status is EvidenceStatus.SPARSE, "stale evidence must not read as well-evidenced"
+
+
+def test_two_claims_from_one_document_is_not_a_position():
+    claims = [c("a", "same_doc", date(2025, 1, 1), 3), c("b", "same_doc", date(2025, 1, 1), 3)]
+    out = compute(claims, date(2025, 2, 1))
+    assert out.status is EvidenceStatus.INSUFFICIENT and out.value is None
+
+
+def test_window_does_not_widen_past_the_cap():
+    claims = [c("a", "d1", date(2019, 1, 1), 2), c("b", "d2", date(2019, 3, 1), 2)]
+    out = compute(claims, date(2026, 9, 1))
+    assert out.value is None, "seven-year-old statements must not be drawn as current"

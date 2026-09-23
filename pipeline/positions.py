@@ -126,10 +126,14 @@ def build(synthetic: bool) -> dict:
             cl = claims.get((pid, axis), [])
             row = []
             for m in grid:
-                pos = compute(cl, m)
+                # Evaluate at month end so statements made anywhere in the
+                # month count toward it; month start would exclude them.
+                nxt = date(m.year + (m.month == 12), (m.month % 12) + 1, 1)
+                pos = compute(cl, date.fromordinal(nxt.toordinal() - 1))
                 row.append(None if pos.value is None else
                            [round(pos.value, 2), round(pos.dispersion, 2),
-                            pos.n_claims, pos.status.value[0]])
+                            pos.n_claims, pos.status.value[0],
+                            round(pos.newest_age_months)])
             series[axis] = row
         contradictions = sum(len(find_contradictions(claims.get((pid, a), [])))
                              for a in allowed[pid])

@@ -5,7 +5,7 @@ import { Html, Line, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
-type Cell = [number, number, number, string] | null;
+type Cell = [number, number, number, string, number?] | null; // value, dispersion, n, status, months stale
 type Person = {
   id: string; name: string; role: string; kind: string; headline: boolean;
   axes: Record<string, Cell[]>; axes_allowed: string[];
@@ -17,14 +17,32 @@ type EventRow = {
 };
 export type Credit = { license: string; artist: string; file_page: string; license_url: string };
 
+export type Claim = {
+  id: string; date: string; precision: string; quote: string; claim: string;
+  topics: string[]; scores: { axis: string; score: number; strength: number; confidence: number }[];
+  hedged: boolean; timeline_years: number | null; reviewed: boolean; extractor: string;
+  source: { url: string; title: string; publisher: string; type: string; tier: number; language: string };
+};
+
 export type Positions = {
   synthetic: boolean; generated_at: string; months: string[];
   axes: Record<string, { label: string; low: string; high: string }>;
   people: Person[]; events?: EventRow[]; credits?: Record<string, Credit>;
+  claims?: Record<string, Claim[]>;
 };
 
 const SCALE = 1.4;
 const AXIS_KEYS = ["X", "Y", "Z"] as const;
+type AxisKey = "X" | "Y" | "Z" | "W" | "S";
+/** Named views. 3D uses X,Y,Z; a 2D view maps two axes to screen X and Y so
+ *  people evidenced on only two axes still appear. */
+const VIEWS: Record<string, { label: string; axes: [AxisKey, AxisKey, AxisKey | null] }> = {
+  "3d":  { label: "3D",                 axes: ["X", "Y", "Z"] },
+  "xy":  { label: "Access × Posture",   axes: ["X", "Y", null] },
+  "zy":  { label: "AGI-pilled × Posture", axes: ["Z", "Y", null] },
+  "zw":  { label: "AGI-pilled × Outcome", axes: ["Z", "W", null] },
+  "sz":  { label: "Path × AGI-pilled",  axes: ["S", "Z", null] },
+};
 // Axis reaches past the maximum possible score so nobody ever sits outside the frame.
 const L = 3 * SCALE * 1.25;
 const AXIS = "#8fb9cf";
@@ -39,13 +57,16 @@ function monthFraction(date: string, months: string[]): number {
 
 /** null = do not draw. `free` lists axes that are structurally undefined for this
  *  entity, which render as a line through that dimension instead of a false point. */
+let ACTIVE: [AxisKey, AxisKey, AxisKey | null] = ["X", "Y", "Z"];
+
 function coords(p: Person, i: number): { pos: [number, number, number]; free: string[] } | null {
   const out: number[] = [];
   const free: string[] = [];
-  for (const a of AXIS_KEYS) {
+  for (const a of ACTIVE) {
+    if (a === null) { out.push(0); continue; }               // flattened dimension in a 2D view
     if (!p.axes_allowed.includes(a)) { out.push(0); free.push(a); continue; }
     const cell = p.axes[a]?.[i];
-    if (!cell) return null;                 // allowed but under-evidenced
+    if (!cell) return null;                                  // allowed but under-evidenced
     out.push(cell[0] * SCALE);
   }
   return { pos: [out[0], out[1], out[2]], free };
@@ -53,7 +74,7 @@ function coords(p: Person, i: number): { pos: [number, number, number]; free: st
 
 /** Which allowed axes have no evidence at month i. Empty = renderable. */
 function missingAxes(p: Person, i: number): string[] {
-  return AXIS_KEYS.filter((a) => p.axes_allowed.includes(a) && !p.axes[a]?.[i]);
+  return (ACTIVE.filter(Boolean) as AxisKey[]).filter((a) => p.axes_allowed.includes(a) && !p.axes[a]?.[i]);
 }
 
 /** Nearest month where this person renders, or null. */
@@ -111,8 +132,8 @@ function Node({ p, i, onPick, selected, dim }: {
 
       {/* Structurally undefined axis: a bar through that dimension, never a point. */}
       {c.free.map((a) => {
-        const dir: [number, number, number] =
-          a === "X" ? [L, 0, 0] : a === "Y" ? [0, L, 0] : [0, 0, L];
+        const k = ACTIVE.indexOf(a as AxisKey);
+        const dir: [number, number, number] = k === 0 ? [L, 0, 0] : k === 1 ? [0, L, 0] : [0, 0, L];
         const seg: [number, number, number][] = [
           [-dir[0], -dir[1], -dir[2]], dir,
         ];
@@ -140,11 +161,12 @@ function Node({ p, i, onPick, selected, dim }: {
 }
 
 function AxisFrame({ axes }: { axes: Positions["axes"] }) {
+  const [ax, ay, az] = ACTIVE;
   const spec: [[number, number, number], string, string][] = [
-    [[L, 0, 0], axes.X.high, axes.X.low],
-    [[0, L, 0], axes.Y.high, axes.Y.low],
-    [[0, 0, L], axes.Z.high, axes.Z.low],
+    [[L, 0, 0], axes[ax].high, axes[ax].low],
+    [[0, L, 0], axes[ay].high, axes[ay].low],
   ];
+  if (az) spec.push([[0, 0, L], axes[az].high, axes[az].low]);
   const label = (text: string) => (
     <span style={{
       color: AXIS, fontSize: 21, fontWeight: 800, letterSpacing: 1.8,
@@ -198,6 +220,11 @@ export default function BeliefMap({ data }: { data: Positions }) {
   const [showEvents, setShowEvents] = useState(true);
   const [spin, setSpin] = useState(false);
   const [query, setQuery] = useState("");
+  const [view, setView] = useState<keyof typeof VIEWS>("3d");
+  ACTIVE = VIEWS[view].axes;
+  const claims = data.claims ?? {};
+  const totalClaims = Object.values(claims).reduce((n, c) => n + c.length, 0);
+  const peopleWithClaims = Object.keys(claims).length;
 
   useEffect(() => {
     if (!playing) return;
@@ -234,11 +261,17 @@ export default function BeliefMap({ data }: { data: Positions }) {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-[#03070c]">
-      {data.synthetic && (
+      {data.synthetic ? (
         <div className="absolute inset-x-0 top-0 z-30 bg-amber-500 px-4 py-1.5 text-center
                         text-xs font-semibold tracking-wide text-black">
           SYNTHETIC FIXTURE — coordinates are generated, not derived from real statements.
           Positions and clusters here mean nothing yet.
+        </div>
+      ) : (
+        <div className="absolute inset-x-0 top-0 z-30 bg-slate-800/90 px-4 py-1 text-center
+                        text-[11px] tracking-wide text-slate-300">
+          Early build · every coordinate here traces to {totalClaims} verbatim-checked quotes
+          across {peopleWithClaims} people · people without enough evidence are not drawn
         </div>
       )}
 
@@ -259,6 +292,15 @@ export default function BeliefMap({ data }: { data: Positions }) {
       </header>
 
       <div className="absolute left-7 top-[11rem] z-30 w-72">
+        <div className="mb-2 flex flex-wrap gap-1 rounded-md border border-slate-700/80 bg-slate-900/70 p-0.5 text-[11px]">
+          {Object.entries(VIEWS).map(([k, v]) => (
+            <button key={k} onClick={() => { setView(k as keyof typeof VIEWS); setPicked(null); }}
+                    className={"rounded px-2 py-1 " + (view === k
+                      ? "bg-slate-200 text-slate-900" : "text-slate-400 hover:text-slate-200")}>
+              {v.label}
+            </button>
+          ))}
+        </div>
         <input value={query} onChange={(e) => setQuery(e.target.value)}
                placeholder="Search a person…"
                className="w-full rounded-md border border-slate-700/80 bg-slate-900/70 px-3 py-1.5
@@ -388,7 +430,7 @@ export default function BeliefMap({ data }: { data: Positions }) {
           </div>
 
           <dl className="mt-4 space-y-2 text-sm">
-            {(["X", "Y", "Z", "W"] as const).map((a) => {
+            {(["X", "Y", "Z", "W", "S"] as const).map((a) => {
               const allowed = picked.axes_allowed.includes(a);
               const cell = picked.axes[a]?.[i];
               return (
@@ -397,7 +439,15 @@ export default function BeliefMap({ data }: { data: Positions }) {
                     <dt className="text-slate-400">{data.axes[a].label}</dt>
                     <dd className="font-mono text-slate-100">
                       {!allowed ? <span className="text-slate-600">not applicable</span>
-                        : cell ? cell[0].toFixed(2)
+                        : cell ? <>
+                            {cell[0].toFixed(2)}
+                            {(cell[4] ?? 0) > 12 && (
+                              <span className="ml-1.5 text-[10px] text-amber-600/90"
+                                    title="freshest supporting statement is this old">
+                                {cell[4]}mo old
+                              </span>
+                            )}
+                          </>
                         : <span className="text-amber-600/80">no evidence</span>}
                     </dd>
                   </div>
@@ -411,6 +461,41 @@ export default function BeliefMap({ data }: { data: Positions }) {
               );
             })}
           </dl>
+
+          {(claims[picked.id] ?? []).length > 0 && (
+            <div className="mt-4 max-h-[38vh] overflow-y-auto pr-1">
+              <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-500">
+                What they said · {claims[picked.id].length} statements
+              </p>
+              <ul className="space-y-3">
+                {claims[picked.id].map((cl) => (
+                  <li key={cl.id} className="border-l-2 border-slate-700 pl-3">
+                    <p className="text-[13px] leading-snug text-slate-100">“{cl.quote}”</p>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px]">
+                      <span className="font-mono text-slate-500">{cl.date.slice(0, 7)}</span>
+                      {cl.scores.map((sc) => (
+                        <span key={sc.axis} title={data.axes[sc.axis]?.label}
+                              className="rounded bg-slate-800 px-1.5 py-0.5 font-mono text-slate-300">
+                          {sc.axis} {sc.score > 0 ? "+" : ""}{sc.score}
+                        </span>
+                      ))}
+                      {cl.timeline_years !== null && (
+                        <span className="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">
+                          ~{cl.timeline_years}y to AGI
+                        </span>
+                      )}
+                      {cl.hedged && <span className="text-slate-500">hedged</span>}
+                      <a href={cl.source.url} target="_blank" rel="noreferrer"
+                         className="ml-auto truncate text-slate-400 underline hover:text-slate-200"
+                         style={{ maxWidth: "11rem" }}>
+                        {cl.source.publisher || cl.source.title}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <p className="mt-3 text-[11px] leading-relaxed text-slate-500">
             enters the map {picked.enters_at ?? "—"}

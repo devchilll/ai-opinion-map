@@ -1,6 +1,13 @@
-# Long-form interview shows that publish full transcripts on public episode pages.
-# Probed 2026-09-17. Episode pages are ordinary web pages; no downloader involved.
+# Long-form interview shows. Episode pages are ordinary public web pages; the
+# collector keeps only the guest's own turns. Probed 2026-09-22.
 feeds:
   Dwarkesh Podcast: https://api.substack.com/feed/podcast/69345.rss
   Lex Fridman Podcast: https://lexfridman.com/feed/podcast/
   Hard Fork: https://feeds.simplecast.com/l2i9YnTd
+  Decoder: https://feeds.megaphone.fm/recodedecode
+  No Priors: https://feeds.megaphone.fm/nopriors
+  All-In: https://allinchamathjason.libsyn.com/rss
+  Possible: https://feeds.megaphone.fm/possible
+  Latent Space: https://api.substack.com/feed/podcast/1084089.rss
+  Invest Like the Best: https://feeds.megaphone.fm/investlikethebest
+  ChinaTalk: https://api.substack.com/feed/podcast/4220.rss

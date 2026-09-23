@@ -24,6 +24,13 @@ MIN_CLAIMS = 2
 MIN_EVIDENCE_MASS = 0.35
 SPARSE_EVIDENCE_MASS = 1.2
 
+# When the base window holds too little, widen it step by step rather than
+# drawing nothing. A 2024 interview is the best available evidence for someone
+# in 2026 if they have said nothing newer -- but the UI must then say so, which
+# is what `newest_age_months` is for.
+WINDOW_STEPS = (6, 12, 24, 36)
+MAX_WINDOW = WINDOW_STEPS[-1]
+
 
 def window_months(at: date) -> int:
     """Wider lookback in the sparse years, tighter as source density rises."""
@@ -53,6 +60,8 @@ class PositionOut:
     dispersion: float
     status: EvidenceStatus
     contributing_claim_ids: list[str]
+    window_months: int = 0          # the lookback that was actually used
+    newest_age_months: float = 0.0  # how stale the freshest contributing claim is
 
 
 def _months_between(earlier: date, later: date) -> float:
@@ -61,24 +70,32 @@ def _months_between(earlier: date, later: date) -> float:
 
 
 def compute(claims: list[ClaimInput], at: date) -> PositionOut:
-    window = window_months(at)
+    base = window_months(at)
     decay = LAMBDA_PER_MONTH if at.year >= 2021 else LAMBDA_PER_MONTH / 2
 
-    in_window = []
-    for c in claims:
-        age = _months_between(c.date, at)
-        if 0 <= age <= window:
-            in_window.append((c, age))
+    aged = [(c, _months_between(c.date, at)) for c in claims]
+    aged = [(c, a) for c, a in aged if a >= 0]
+
+    # Widen until the window holds enough distinct documents to call a position.
+    window = base
+    in_window: list = []
+    for step in [w for w in WINDOW_STEPS if w >= base] or [base]:
+        window = step
+        in_window = [(c, a) for c, a in aged if a <= window]
+        if len({c.doc_id for c, _ in in_window}) >= MIN_CLAIMS:
+            break
 
     if not in_window:
-        return PositionOut(None, 0, 0.0, 0.0, EvidenceStatus.INSUFFICIENT, [])
+        return PositionOut(None, 0, 0.0, 0.0, EvidenceStatus.INSUFFICIENT, [], window, 0.0)
+
+    newest_age = min(a for _, a in in_window)
 
     # Raw weights, then normalise within each document so a long essay that
     # yielded 14 claims does not outvote 14 separate interviews.
     raw: dict[str, list[tuple[ClaimInput, float]]] = defaultdict(list)
     for c, age in in_window:
         w = (c.strength * c.confidence * TIER_WEIGHT.get(c.tier, 0.0)
-             * math.exp(-decay * age))
+             * math.exp(-decay * (age - newest_age)))
         raw[c.doc_id].append((c, w))
 
     weighted: list[tuple[ClaimInput, float]] = []
@@ -93,7 +110,7 @@ def compute(claims: list[ClaimInput], at: date) -> PositionOut:
 
     mass = sum(w for _, w in weighted)
     if mass <= 0:
-        return PositionOut(None, 0, 0.0, 0.0, EvidenceStatus.INSUFFICIENT, [])
+        return PositionOut(None, 0, 0.0, 0.0, EvidenceStatus.INSUFFICIENT, [], window, 0.0)
 
     value = sum(c.score * w for c, w in weighted) / mass
     if len(weighted) > 1:
@@ -103,11 +120,13 @@ def compute(claims: list[ClaimInput], at: date) -> PositionOut:
         dispersion = 0.0
 
     n = len(weighted)
-    if n < MIN_CLAIMS or mass < MIN_EVIDENCE_MASS:
+    n_docs = len({c.doc_id for c, _ in weighted})
+    # Two claims from ONE document is still one occasion, not a position.
+    if n < MIN_CLAIMS or n_docs < MIN_CLAIMS or mass < MIN_EVIDENCE_MASS:
         status = EvidenceStatus.INSUFFICIENT
         value = None
-    elif mass < SPARSE_EVIDENCE_MASS:
-        status = EvidenceStatus.SPARSE
+    elif mass < SPARSE_EVIDENCE_MASS or newest_age > 18:
+        status = EvidenceStatus.SPARSE          # also covers "evidence is stale"
     else:
         status = EvidenceStatus.WELL_EVIDENCED
 
@@ -115,6 +134,7 @@ def compute(claims: list[ClaimInput], at: date) -> PositionOut:
         value=round(value, 3) if value is not None else None,
         n_claims=n, evidence_mass=round(mass, 4), dispersion=round(dispersion, 3),
         status=status, contributing_claim_ids=[c.claim_id for c, _ in weighted],
+        window_months=window, newest_age_months=round(newest_age, 1),
     )
 
 
