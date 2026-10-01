@@ -1,0 +1,92 @@
+# Which benchmarks the model track shows, grouped by the capability direction
+# they measure. Scores come from Epoch AI's benchmarking hub (CC BY 4.0); this
+# file only decides grouping, order and the one-line plain-language gloss.
+#
+# `file`/`column`/`scale`/`baseline` are needed only for benchmarks that Epoch
+# ships a CSV for but leaves out of its benchmark_metadata.csv.
+directions:
+  - id: language
+    label: Language understanding
+    blurb: Reading comprehension and common sense. The benchmarks of the BERT and GPT-3 years, now saturated.
+    benchmarks:
+      - {name: LAMBADA, gloss: Predict the last word of a passage}
+      - {name: TriviaQA, gloss: Open-domain trivia questions}
+      - {name: ARC AI2, gloss: Grade-school science questions}
+      - {name: OpenBookQA, gloss: Science questions needing outside facts}
+      - {name: HellaSwag, gloss: Pick the plausible continuation of a scene}
+      - {name: Winogrande, gloss: Pronoun resolution needing common sense}
+      - {name: PIQA, gloss: Physical common sense}
+      - {name: MMLU, gloss: Exam questions across 57 subjects}
+      - {name: BBH, gloss: 23 tasks earlier models failed}
+  - id: math
+    label: Mathematics
+    blurb: From grade-school word problems to unpublished research-level problems.
+    benchmarks:
+      - {name: GSM8K, gloss: Grade-school word problems}
+      - {name: MATH level 5, gloss: Hardest competition-style high-school problems}
+      - {name: OTIS Mock AIME 2024-2025, gloss: Olympiad-qualifier exam problems}
+      - {name: FrontierMath-Tiers-1-3-v2-Private, label: FrontierMath T1-3, gloss: Unpublished problems needing hours of expert work}
+      - {name: FrontierMath-Tier-4-v2-Private, label: FrontierMath T4, gloss: Research-level problems}
+      - {name: ProofBench, gloss: Writing full proofs, graded for rigor}
+  - id: science
+    label: Science and expert knowledge
+    blurb: Questions that take a domain PhD to answer.
+    benchmarks:
+      - {name: ScienceQA, gloss: School science with diagrams}
+      - {name: GPQA diamond, gloss: Graduate-level physics, chemistry, biology}
+      - {name: SciCode, file: scicode_external.csv, column: Score, gloss: Code that reproduces scientific results}
+      - {name: HLE, label: Humanity's Last Exam, gloss: 2500 questions at the edge of expert knowledge}
+      - {name: CritPt, file: critpt_external.csv, column: Accuracy, gloss: Unpublished research-level physics problems}
+  - id: reasoning
+    label: Abstract reasoning
+    blurb: Novel puzzles that cannot be memorised.
+    benchmarks:
+      - {name: ARC-AGI, gloss: Infer a rule from a few grid examples}
+      - {name: SimpleBench, gloss: Trick questions most people get right}
+      - {name: ARC-AGI-2, gloss: Harder grids built to resist brute force}
+      - {name: Chess Puzzles, gloss: Find the best move}
+  - id: coding
+    label: Agentic coding
+    blurb: Fixing real issues in real repositories, alone, start to finish.
+    benchmarks:
+      - {name: Aider polyglot, gloss: Hard exercises across six languages}
+      - {name: SWE-Bench verified, label: SWE-bench Verified, gloss: Resolve real GitHub issues}
+      - {name: Terminal Bench, gloss: Finish tasks inside a live terminal}
+      - {name: GSO-Bench, gloss: Speed up real codebases}
+      - {name: DeepSWE, gloss: Long multi-file engineering tasks}
+      - {name: FrontierCode, gloss: Coding tasks beyond current models}
+  - id: autonomy
+    label: Autonomy and real work
+    blurb: Operating a computer and completing paid jobs without a human in the loop.
+    benchmarks:
+      - {name: OSWorld, gloss: Operate a desktop to finish a task}
+      - {name: The Agent Company, gloss: Tasks inside a simulated software firm}
+      - {name: GDPval, gloss: Win rate against professionals on real deliverables}
+      - {name: Remote Labor Index, gloss: Share of real freelance projects completed}
+      - {name: APEX-Agents, gloss: Banking, consulting and legal work}
+      - {name: OSWorld 2.0, gloss: Harder desktop tasks}
+  - id: multimodal
+    label: Vision and spatial
+    blurb: Understanding video, images and three-dimensional space.
+    benchmarks:
+      - {name: VideoMME, file: video_mme_external.csv, column: Overall (no subtitles), baseline: 0.25, gloss: Questions about videos up to an hour long}
+      - {name: VPCT, gloss: Predict where a ball lands from a picture}
+      - {name: GeoBench, gloss: Name the country from a street photo}
+      - {name: SpatialViz, file: spatialviz_bench_external.csv, column: Overall score, baseline: 0.25, gloss: Mental rotation and folding}
+  - id: security
+    label: Cybersecurity
+    blurb: Finding and exploiting vulnerabilities.
+    benchmarks:
+      - {name: Cybench, gloss: Capture-the-flag challenges}
+      - {name: ExploitBench, gloss: Building working exploits}
+
+# Labs that get their own colour. Everyone else is drawn as "Other".
+labs:
+  - {id: openai, name: OpenAI, match: [OpenAI]}
+  - {id: anthropic, name: Anthropic, match: [Anthropic]}
+  - {id: google, name: Google, match: [Google DeepMind, Google, DeepMind, Google Brain, Google Research]}
+  - {id: meta, name: Meta, match: [Meta AI, Meta, Facebook AI Research, Facebook]}
+  - {id: xai, name: xAI, match: [xAI]}
+  - {id: deepseek, name: DeepSeek, match: [DeepSeek]}
+  - {id: alibaba, name: Alibaba, match: [Alibaba]}
+  - {id: mistral, name: Mistral, match: [Mistral AI]}

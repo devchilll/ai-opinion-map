@@ -145,9 +145,12 @@ def extract(html: str, url: str, feed_date: str | None = None) -> DateGuess:
         best_date = best_date.replace(day=1)
 
     # A dateline resolving to the current month is usually site furniture --
-    # a nav label or a "latest posts" header, not this document's date.
+    # a nav label or a "latest posts" header, not this document's date. A date
+    # carried by the URL or the feed entry belongs to this document alone, so
+    # it is exempt: a press release at /2026/09/16/ really is from this month.
     today = date.today()
-    if (best_date.year, best_date.month) == (today.year, today.month) and "corroborated" not in note:
+    if ((best_date.year, best_date.month) == (today.year, today.month)
+            and "corroborated" not in note and source not in ("url", "feed")):
         confidence = LOW
         note = (note + "; " if note else "") + "resolves to current month, likely site furniture"
 

@@ -33,7 +33,7 @@ def main() -> int:
         # metadata: scraping the rendered page is strictly worse evidence.
         rows = [dict(r) for r in conn.execute(
             "SELECT doc_id, canonical_url, raw_path, publication_date FROM documents "
-            "WHERE COALESCE(date_source,'') != 'rss'")]
+            "WHERE COALESCE(date_source,'') NOT IN ('rss','seed')")]
 
         updates = []
         for r in rows:

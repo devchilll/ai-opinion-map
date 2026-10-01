@@ -70,6 +70,24 @@ cd web && npm install && npm run dev
 `python -m pipeline.explain --person <id> --axis <X|Y|Z|W|S> --at YYYY-MM`
 prints how a single coordinate was derived, quote by quote.
 
+## The model track
+
+A second page, `/models`, shows what the models themselves did over the same
+years: the best score on 42 benchmarks grouped by direction (language, maths,
+science, abstract reasoning, agentic coding, autonomy, vision, security), a
+single capability index per model, the length of task a model can finish alone,
+and what kinds of data each year's notable models handled.
+
+Every point is a recorded score for a named model. The numbers come from
+[Epoch AI](https://epoch.ai/benchmarks)'s bulk downloads (CC BY 4.0), with
+task-length measurements by METR. `data/registry/benchmarks.yaml` decides only
+the grouping and the plain-language gloss.
+
+```
+python -m collectors.models        # two bulk files into data/raw/models/
+python -m pipeline.models_build    # -> data/out/models.json and web/public/data/
+```
+
 ## Data that is not in this repo
 
 The fetched corpus is excluded on purpose — see `.gitignore`. The registries

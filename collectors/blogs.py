@@ -30,7 +30,7 @@ _SKIP = re.compile(
     r"(mailto:|tel:|javascript:|"
     r"\.(pdf|jpe?g|png|gif|svg|webp|ico|zip|gz|mp[34]|woff2?|ttf|eot|css|js|json|xml|rss)(\?|$)|"
     r"/_next/|/static/|/assets/|/wp-content/|/wp-json/|/cdn-cgi/|"
-    r"/tag/|/category/|/author/|/page/\d|"
+    r"/tag/|/category/|/author/|/page/\d|/legal/|/privacy|/terms|/cookie|"
     r"twitter\.com|x\.com|linkedin\.com|facebook\.com|youtube\.com|github\.com|"
     r"instagram\.com|t\.co/)",
     re.I,

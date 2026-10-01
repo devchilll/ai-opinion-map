@@ -9,7 +9,7 @@ Writes happen once, on the main thread, after each phase.
 from __future__ import annotations
 
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -73,6 +73,9 @@ def main(limit: int = PER_INDEX_LIMIT) -> int:
         meta = trafilatura.extract_metadata(raw)
         spec, seed = d.job.meta["spec"], d.job.meta["seed"]
         lang = seed.get("language", spec.get("language", "en"))
+        # A date written on the seed was read off the document by whoever
+        # curated the registry. It outranks anything scraped from the page.
+        seed_date = date.fromisoformat(str(seed["date"])) if seed.get("date") else None
         docs.append(Document(
             doc_id=d.result.content_hash, person_id=d.job.meta["person_id"],
             source_url=d.job.url, canonical_url=d.result.canonical_url,
@@ -82,8 +85,11 @@ def main(limit: int = PER_INDEX_LIMIT) -> int:
             title=(getattr(meta, "title", "") or "")[:300],
             authored_by_subject=seed.get("authored_by_subject",
                                          spec.get("authored_by_subject", True)),
-            utterance_date=None, publication_date=None,
-            date_precision=DatePrecision.QUARTER, language=lang,
+            utterance_date=seed_date, publication_date=seed_date,
+            date_precision=DatePrecision.DAY if seed_date else DatePrecision.QUARTER,
+            date_source="seed" if seed_date else "",
+            date_confidence="high" if seed_date else "none",
+            language=lang,
             raw_path=d.result.raw_path, raw_content_hash=d.result.content_hash,
             text=text, collector=COLLECTOR, fetched_at=datetime.now(timezone.utc),
             audience=Audience.PUBLIC_POST,

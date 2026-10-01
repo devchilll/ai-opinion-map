@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, Line, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
@@ -282,6 +283,10 @@ export default function BeliefMap({ data }: { data: Positions }) {
       )}
 
       <header className="pointer-events-none absolute left-7 top-12 z-30 max-w-sm">
+        <nav className="pointer-events-auto mb-2 flex items-center gap-1 text-[13px] font-semibold">
+          <span className="rounded-full bg-sky-400/15 px-3 py-1.5 text-sky-100">People</span>
+          <Link href="/models" className="rounded-full px-3 py-1.5 text-slate-400 hover:text-slate-100">Models</Link>
+        </nav>
         <h1 className="text-[26px] font-semibold leading-tight text-slate-50">
           How the people shaping AI see its future
         </h1>
