@@ -22,6 +22,8 @@ class SourceType(str, Enum):
     PODCAST = "podcast"
     INTERVIEW = "interview"
     REPORTING = "reporting"
+    ORDER = "order"            # executive order or other signed instrument
+    STATEMENT = "statement"    # official statement or press release quoting the subject
 
 
 class Audience(str, Enum):

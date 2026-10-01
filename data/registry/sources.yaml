@@ -26,6 +26,71 @@ sources:
       kind: index
       status: ok
       note: mostly papers; his positions live in talks and interviews
+    - url: https://www.wired.com/story/googles-ai-guru-computers-think-more-like-brains/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2018-12 WIRED interview Q&A, pre-alarm baseline
+      status: verified 2026-09-30
+    - url: https://www.technologyreview.com/2020/11/03/1011616/ai-godfather-geoffrey-hinton-deep-learning-will-do-everything/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2020-11 MIT Technology Review interview Q&A ("deep learning will do everything")
+      status: verified 2026-09-30
+    - url: https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: reporting
+      tier: 2
+      note: 2023-05 MIT Technology Review piece after leaving Google; reported article built on long direct quotes, not a
+        Q&A
+      status: verified 2026-09-30
+    - url: https://english.elpais.com/science-tech/2023-05-12/geoffrey-hinton-we-need-to-find-a-way-to-control-artificial-intelligence-before-its-too-late.html
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-05 EL PAIS English interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.pbs.org/newshour/show/godfather-of-ai-discusses-dangers-the-developing-technologies-pose-to-society
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-05 PBS NewsHour full segment transcript; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.cbsnews.com/news/geoffrey-hinton-ai-dangers-60-minutes-transcript/
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2023-10 60 Minutes broadcast transcript; narrated segment with extended Hinton quotes
+      status: verified 2026-09-30
+    - url: https://www.nobelprize.org/prizes/physics/2024/hinton/interview/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2024-10 Nobel Prize telephone interview transcript on the page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.nobelprize.org/prizes/physics/2024/hinton/1925103-interview-transcript/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2024-12 Nobel Week interview transcript (~18k chars); interview Q&A
+      status: verified 2026-09-30
   sam-altman:
     tier: 1
     authored_by_subject: true
@@ -69,6 +134,62 @@ sources:
       kind: index
       authored_by_subject: false
       status: unverified
+    - url: https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2025-08 own essay "We must build AI for people; not to be a person"
+      status: verified 2026-09-30
+    - url: https://microsoft.ai/news/towards-humanist-superintelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2025-11 own essay on humanist superintelligence, Microsoft AI newsroom
+      status: verified 2026-09-30
+    - url: https://time.com/6310115/ai-revolution-reshape-the-world/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-09 own TIME essay adapted from The Coming Wave
+      status: verified 2026-09-30
+    - url: https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-07 own op-ed in MIT Technology Review (Modern Turing Test)
+      status: verified 2026-09-30
+    - url: https://www.technologyreview.com/2023/09/15/1079624/deepmind-inflection-generative-ai-whats-next-mustafa-suleyman/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-09 MIT Technology Review interview Q&A
+      status: verified 2026-09-30
+    - url: https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2023-09 80,000 Hours podcast, full transcript published by outlet; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.wired.com/story/have-a-nice-future-podcast-18/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2023-08 WIRED Have a Nice Future podcast, full transcript; interview Q&A
+      status: verified 2026-09-30
   fei-fei-li:
     tier: 1
     authored_by_subject: false
@@ -79,6 +200,62 @@ sources:
     - url: https://hai.stanford.edu/news
       kind: index
       status: unverified
+    - url: https://hai.stanford.edu/news/introducing-stanfords-human-centered-ai-initiative
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2018-10 essay co-authored with John Etchemendy launching Stanford HAI
+      status: verified 2026-09-30
+    - url: https://exchange.scale.com/public/videos/human-centered-ai-with-fei-fei-li
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 2
+      note: c.2021 Scale Transform fireside, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://issues.org/interview-godmother-ai-fei-fei-li/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2024-04 Issues in Science and Technology interview Q&A
+      status: verified 2026-09-30
+    - url: https://fortune.com/2024/08/06/godmother-of-ai-says-californias-ai-bill-will-harm-us-ecosystem-tech-politics/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2024-08 own Fortune op-ed opposing SB 1047
+      status: verified 2026-09-30
+    - url: https://www.possible.fm/podcasts/feifei/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2025-01 Possible podcast (Reid Hoffman), transcript published by outlet; interview Q&A
+      status: verified 2026-09-30
+    - url: https://drfeifei.substack.com/p/from-words-to-worlds-spatial-intelligence
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2025-11 own Substack essay on spatial intelligence / world models
+      status: verified 2026-09-30
+    - url: https://www.hubermanlab.com/episode/using-ai-to-increase-your-intelligence-and-enrich-humanity-fei-fei-li
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 2
+      note: 2026-08 Huberman Lab, full transcript on episode page (~120k chars); interview Q&A
+      status: verified 2026-09-30
   ilya-sutskever:
     tier: 1
     authored_by_subject: true
@@ -115,10 +292,108 @@ sources:
     - url: https://blogs.nvidia.com/
       kind: index
       status: unverified
+    - url: https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2022-03 Stratechery interview, free full transcript; interview Q&A
+      status: verified 2026-09-30
+    - url: https://stratechery.com/2023/an-interview-with-nvidia-ceo-jensen-huang-about-ais-iphone-moment/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-03 Stratechery interview; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.acquired.fm/episodes/jensen-huang
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2023-10 Acquired podcast, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://stratechery.com/2025/an-interview-with-nvidia-ceo-jensen-huang-about-chip-controls-ai-factories-and-enterprise-pragmatism/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2025-05 Stratechery interview on chip export controls; interview Q&A
+      status: verified 2026-09-30
+    - url: https://stratechery.com/2026/an-interview-with-nvidia-ceo-jensen-huang-about-accelerated-computing/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2026 Stratechery interview; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.dwarkesh.com/p/jensen-huang
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2026-04 Dwarkesh Podcast, full transcript on page; interview Q&A
+      status: verified 2026-09-30
   elon-musk:
     tier: 1
     authored_by_subject: true
-    seeds: []
+    seeds:
+    - url: https://e-discoveryteam.com/elon-musk-governors-interview/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 2
+      note: 2017-07 National Governors Association remarks on AI regulation; third-party blog transcript, short (~3.9k chars)
+      status: verified 2026-09-30
+    - url: https://lexfridman.com/elon-musk-4-transcript
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: '2023-11 Lex Fridman #400 official transcript; interview Q&A'
+      status: verified 2026-09-30
+    - url: https://www.rev.com/transcripts/dealbook-summit-2023-elon-musk-interview-transcript
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2023-11 NYT DealBook Summit, Rev transcript-service copy (not published by NYT); interview Q&A
+      status: verified 2026-09-30
+    - url: https://lexfridman.com/elon-musk-and-neuralink-team-transcript
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: '2024-08 Lex Fridman #438 official transcript; very long (~595k chars) and includes Neuralink staff, attribute
+        by speaker label; interview Q&A'
+      status: verified 2026-09-30
+    - url: https://www.rev.com/transcripts/musk-speaks-at-wef
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 2
+      note: 2026-01 Davos conversation with Larry Fink, Rev transcript-service copy (weforum.org page returns 403); interview
+        Q&A
+      status: verified 2026-09-30
+    - url: https://www.dwarkesh.com/p/elon-musk
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2026-02 Dwarkesh Podcast, full transcript on page; interview Q&A
+      status: verified 2026-09-30
   mira-murati:
     tier: 1
     authored_by_subject: false
@@ -126,6 +401,22 @@ sources:
     - url: https://thinkingmachines.ai/blog/
       kind: index
       status: unverified
+    - url: https://time.com/6252404/mira-murati-chatgpt-openai-interview/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-02 TIME interview Q&A on ChatGPT and regulation (~7k chars)
+      status: verified 2026-09-30
+    - url: https://fortune.com/longform/openai-mira-murati-chatgpt-dalle-3-generative-ai-agi
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2023-10 Fortune cover interview Q&A, edited transcript (~16k chars)
+      status: verified 2026-09-30
   daniela-amodei:
     tier: 1
     authored_by_subject: false
@@ -133,6 +424,38 @@ sources:
     - url: https://www.anthropic.com/news
       kind: index
       status: ok
+    - url: https://futureoflife.org/podcast/daniela-and-dario-amodei-on-anthropic/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2022-03 FLI podcast full transcript, joint with Dario Amodei so attribute by speaker label; interview Q&A
+      status: verified 2026-09-30
+    - url: https://stripe.com/newsroom/stories/anthropic-interview
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2023-07 Stripe newsroom interview Q&A (~6.6k chars)
+      status: verified 2026-09-30
+    - url: https://sixthstreet.com/podcasts/a-conversation-with-daniela-amodei-co-founder-and-president-of-anthropic/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 2
+      note: 2026-02 Sixth Street podcast, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.gsb.stanford.edu/insights/daniela-amodei-says-curiosity-underrated
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2026-06 Stanford GSB View From The Top, full transcript on page; interview Q&A
+      status: verified 2026-09-30
   alexandr-wang:
     tier: 1
     authored_by_subject: false
@@ -140,6 +463,38 @@ sources:
     - url: https://ai.meta.com/blog/
       kind: index
       status: ok
+    - url: https://alexw.substack.com/p/war
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2022 own Substack essay "The AI War and How to Win It"
+      status: verified 2026-09-30
+    - url: https://alexw.substack.com/p/what-i-learned-in-2023
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2024-01 own Substack year-end letter to Scale team on AI
+      status: verified 2026-09-30
+    - url: https://scale.com/blog/win-the-ai-war
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2025-01 own open letter to President Trump, five-point plan (~2.4k chars, short)
+      status: verified 2026-09-30
+    - url: https://www.csis.org/analysis/scale-ais-alexandr-wang-securing-us-ai-leadership
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 1
+      note: 2025-05 CSIS event, full transcript on page; interview Q&A
+      status: verified 2026-09-30
   yoshua-bengio:
     tier: 1
     authored_by_subject: true
@@ -158,8 +513,8 @@ sources:
       tier: 2
       authored_by_subject: true
       status: ok
-      note: 暗涌Waves interview, reposted by Sina Finance. Original 36kr page is a JS app and cannot be
-        fetched; this is the accessible copy of the same text.
+      note: 暗涌Waves interview, reposted by Sina Finance. Original 36kr page is a JS app and cannot be fetched; this is the
+        accessible copy of the same text.
     - url: https://hub.baai.ac.cn/view/42544
       kind: article
       language: zh
@@ -175,6 +530,55 @@ sources:
     - url: https://www.alibabagroup.com/en-US/news
       kind: index
       status: unverified
+    - url: https://www.chinanews.com.cn/cj/2023/09-12/10076352.shtml
+      kind: article
+      authored_by_subject: false
+      language: zh
+      source_type: letter
+      tier: 2
+      note: 2023-09 first all-staff letter (用户为先、AI驱动); wire report that is mostly verbatim excerpts, full letter text not
+        found on a fetchable page
+      status: verified 2026-09-30
+    - url: https://finance.sina.com.cn/jjxw/2024-09-19/doc-incpstrp1319150.shtml
+      kind: article
+      authored_by_subject: false
+      language: zh
+      source_type: talk
+      tier: 2
+      note: 2024-09 云栖大会 keynote; report made mostly of direct quotes (~1.7k CJK chars), no fetchable full text found
+      status: verified 2026-09-30
+    - url: https://news.qq.com/rain/a/20250924A03S7Q00
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: talk
+      tier: 2
+      note: 2025-09 云栖大会 keynote "超级人工智能之路" full text (short DoNews intro then verbatim speech)
+      status: verified 2026-09-30
+    - url: https://caifuhao.eastmoney.com/news/20250924123410125416450
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: talk
+      tier: 2
+      note: 2025-09 second copy of the 2025 云栖 keynote full text, for corroboration
+      status: verified 2026-09-30
+    - url: https://ali-home.alibaba.com/document-2039431633571938304
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: talk
+      tier: 1
+      note: 2026-09 云栖大会 keynote full text on Alibaba Group official site (机器智能 era)
+      status: verified 2026-09-30
+    - url: https://finance.sina.com.cn/hy/hyjz/2026-09-22/doc-inissitf7053669.shtml
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: talk
+      tier: 2
+      note: 2026-09 Sina Finance copy of the 2026 云栖 keynote full text, for corroboration
+      status: verified 2026-09-30
   kai-fu-lee:
     tier: 1
     authored_by_subject: false
@@ -186,6 +590,70 @@ sources:
       kind: index
       status: ok
       authored_by_subject: false
+    - url: https://www.edge.org/conversation/kai_fu_lee-we-are-here-to-create
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 1
+      note: 2018 Edge.org first-person talk "We Are Here To Create" (~32k chars)
+      status: verified 2026-09-30
+    - url: https://www.cbsnews.com/news/60-minutes-ai-facial-and-emotional-recognition-how-one-man-is-advancing-artificial-intelligence/
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2019-01 60 Minutes broadcast transcript; narrated segment with extended Lee quotes, not a pure Q&A
+      status: verified 2026-09-30
+    - url: https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2024-12 36Kr WISE2024 fireside, English translated transcript; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.tmtpost.com/7083856.html
+      kind: article
+      authored_by_subject: false
+      language: zh
+      source_type: interview
+      tier: 2
+      note: 2024-05 钛媒体 对话李开复 at Yi-Large launch; report with long direct quotes, not a clean Q&A
+      status: verified 2026-09-30
+    - url: https://finance.sina.com.cn/roll/2025-01-09/doc-ineeitny9747373.shtml
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: interview
+      tier: 2
+      note: 2025-01 晚点LatePost 对话李开复 (no longer pursuing AGI), Sina repost; interview Q&A
+      status: verified 2026-09-30
+    - url: https://awtmt.com/articles/3738733
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: interview
+      tier: 2
+      note: 2025-01 second copy of the same 晚点 interview (wallstreetcn mirror) for corroboration; interview Q&A
+      status: verified 2026-09-30
+    - url: https://news.qq.com/rain/a/20250317A0548M00
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: interview
+      tier: 2
+      note: 2025-03 腾讯科技 media Q&A at 万智 platform launch (giving up giant models); interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.huxiu.com/article/4873867.html
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: interview
+      tier: 2
+      note: 2026-07 中国企业家 interview reposted by 虎嗅 (pivot to enterprise AI); interview Q&A mixed with narration
+      status: verified 2026-09-30
   donald-trump:
     tier: 1
     authored_by_subject: true
@@ -193,6 +661,127 @@ sources:
     - url: https://www.whitehouse.gov/presidential-actions/
       kind: index
       status: unverified
+    - url: https://trumpwhitehouse.archives.gov/presidential-actions/executive-order-maintaining-american-leadership-artificial-intelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2019-02-11'
+      note: EO 13859, Maintaining American Leadership in Artificial Intelligence (American AI Initiative).
+      status: verified 2026-09-30
+    - url: https://trumpwhitehouse.archives.gov/presidential-actions/executive-order-promoting-use-trustworthy-artificial-intelligence-federal-government/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2020-12-03'
+      note: EO 13960, Promoting the Use of Trustworthy AI in the Federal Government.
+      status: verified 2026-09-30
+    - url: https://www.presidency.ucsb.edu/documents/remarks-artificial-intelligence-infrastructure-development-and-exchange-with-reporters
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 1
+      date: '2025-01-21'
+      note: Stargate announcement remarks and press exchange (American Presidency Project transcript). Includes remarks by
+        Son, Altman, Ellison; attribute speakers carefully.
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-01-23'
+      note: EO 14179, revokes Biden EO 14110 policies and orders an AI Action Plan.
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/04/advancing-artificial-intelligence-education-for-american-youth/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-04-23'
+      note: EO on AI education for American youth.
+      status: verified 2026-09-30
+    - url: https://www.presidency.ucsb.edu/documents/remarks-signing-executive-orders-the-artificial-intelligence-summit
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 1
+      date: '2025-07-23'
+      note: Full transcript of his Winning the AI Race summit speech (AI Action Plan launch, signing three EOs); states positions
+        on state regulation, copyright, 'woke AI'.
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/07/preventing-woke-ai-in-the-federal-government/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-07-23'
+      note: EO Preventing Woke AI in the Federal Government (procurement neutrality requirements for LLMs).
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/07/promoting-the-export-of-the-american-ai-technology-stack/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-07-23'
+      note: EO Promoting the Export of the American AI Technology Stack (model/chip access abroad).
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-11-24'
+      note: EO Launching the Genesis Mission (AI for science at DOE).
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2025-12-11'
+      note: EO 14365, Ensuring a National Policy Framework for Artificial Intelligence (state AI law preemption; AI Litigation
+        Task Force). URL slug differs from the page title.
+      status: verified 2026-09-30
+    - url: https://www.presidency.ucsb.edu/documents/remarks-signing-executive-order-ensuring-national-policy-framework-for-artificial
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: talk
+      tier: 1
+      date: '2025-12-11'
+      note: Remarks and press exchange on signing the state-preemption EO (American Presidency Project transcript).
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2026-06-02'
+      note: EO Promoting Advanced AI Innovation and Security (AI and cybersecurity; disclaims any mandatory licensing/pre-clearance
+        of models).
+      status: verified 2026-09-30
+    - url: https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: order
+      tier: 1
+      date: '2026-09-29'
+      note: EO Inaugurating the Era of Super Intelligence (renames AI to 'Super Intelligence' across the executive branch).
+      status: verified 2026-09-30
   gavin-newsom:
     tier: 1
     authored_by_subject: true
@@ -200,6 +789,116 @@ sources:
     - url: https://www.gov.ca.gov/newsroom/
       kind: index
       status: unverified
+    - url: https://www.gov.ca.gov/2023/09/06/governor-newsom-signs-executive-order-to-prepare-california-for-the-progress-of-artificial-intelligence/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2023-09-06'
+      note: Announcement of Executive Order N-12-23 on generative AI, with Newsom quote. EO text itself is a PDF.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2024/09/17/governor-newsom-signs-bills-to-combat-deepfake-election-content/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2024-09-17'
+      note: Signing of election deepfake bills (AB 2655, AB 2839, AB 2355), with Newsom quote.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2024/09/19/governor-newsom-signs-bills-to-crack-down-on-sexually-explicit-deepfakes-require-ai-watermarking/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2024-09-19'
+      note: Signing of sexually explicit deepfake and AI watermarking bills (SB 926, SB 981, SB 942).
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2024/09/29/governor-newsom-announces-new-initiatives-to-advance-safe-and-responsible-ai-protect-californians/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2024-09-29'
+      note: SB 1047 veto announcement; quotes the veto reasoning inline ('While well-intentioned, SB 1047 does not take into
+        account...'). The veto message proper is a PDF linked from this page.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2025/03/18/california-strengthens-its-position-as-the-global-ai-leader-with-new-working-report-issued-by-experts-and-academics/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2025-03-18'
+      note: Draft report of the Joint California Policy Working Group on AI Frontier Models (post-veto follow-through).
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2025/06/17/as-trump-moves-to-decimate-state-ai-laws-governor-newsom-taps-the-nations-top-experts-for-groundbreaking-ai-report/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2025-06-17'
+      note: Final frontier AI report release; positions against the federal moratorium on state AI laws.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2025-09-29'
+      note: SB 53 (Transparency in Frontier AI Act) signing announcement with Newsom statement.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2025/10/13/governor-newsom-signs-bills-to-further-strengthen-californias-leadership-in-protecting-children-online/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2025-10-13'
+      note: Signing of child online safety package incl. SB 243 companion chatbot safeguards.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2026/05/21/governor-newsom-signs-first-of-its-kind-executive-order-to-prepare-workers-and-businesses-for-potential-ai-disruption/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2026-05-21'
+      note: Executive Order N-6-26 on AI workforce disruption.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2026/09/09/governor-newsom-signs-first-in-the-nation-ai-safeguards-to-protect-californians-calls-on-the-federal-government-to-do-its-part/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2026-09-09'
+      note: 2026 AI safeguards bill signing; calls on the federal government to act.
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2026-09-18'
+      note: 'Executive Order N-9-26: accelerates third-party oversight/audits of frontier AI and advances an ''AI kill switch''.
+        Notable contrast with the 2024 SB 1047 veto.'
+      status: verified 2026-09-30
+    - url: https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2026-09-30'
+      note: End-of-session 2026 AI bill signings (worker protections and more).
+      status: verified 2026-09-30
   nancy-pelosi:
     tier: 1
     authored_by_subject: true
@@ -207,6 +906,43 @@ sources:
     - url: https://pelosi.house.gov/news/press-releases
       kind: index
       status: unverified
+    - url: https://pelosi.house.gov/news/press-releases/pelosi-statement-opposition-california-senate-bill-1047
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: statement
+      tier: 1
+      date: '2024-08-16'
+      note: Her statement opposing SB 1047 ('well-intentioned but ill informed'). Only AI item found on pelosi.house.gov.
+      status: verified 2026-09-30
+    - url: https://www.kqed.org/news/12002254/california-bill-to-regulate-catastrophic-effects-of-ai-heads-to-newsoms-desk
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: reporting
+      tier: 2
+      date: '2024-08-29'
+      note: KQED report quoting Pelosi on SB 1047 as it passed the Legislature. Secondary source, not authored by her.
+      status: verified 2026-09-30
+    - url: https://www.sfexaminer.com/news/politics/pelosi-posts-letter-slamming-wiener-chatbot-mimicking-chan/article_795e707e-7fe8-4fb7-95eb-4f329b7bc464.html
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: reporting
+      tier: 2
+      date: '2026-08-07'
+      note: SF Examiner report on Pelosi's joint letter condemning the Wiener campaign's AI chatbot impersonating Connie Chan;
+        quotes the letter. About AI misuse/impersonation, not model regulation per se.
+      status: verified 2026-09-30
+    - url: https://www.kron4.com/news/bay-area/scott-wiener-says-conniechan-ai-chatbot-campaign-billboards-to-be-removed/
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: reporting
+      tier: 2
+      date: '2026-08-07'
+      note: KRON4 report quoting the same Pelosi joint statement; corroborating copy.
+      status: verified 2026-09-30
   scott-wiener:
     tier: 1
     authored_by_subject: true
@@ -214,3 +950,223 @@ sources:
     - url: https://sd11.senate.ca.gov/news
       kind: index
       status: unverified
+    - url: https://www.cognitiverevolution.ai/governing-frontier-ai-with-ca-senator-scott-wiener-author-of-sb-1047/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 2
+      note: 2024-05 Cognitive Revolution podcast on SB 1047, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://sd11.senate.ca.gov/news/senator-wiener-responds-speaker-emerita-pelosis-opposition-sb-1047
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: post
+      tier: 1
+      note: 2024-08 own official statement responding to Pelosi on SB 1047
+      status: verified 2026-09-30
+    - url: https://www.lawfaremedia.org/article/lawfare-daily--state-senator-scott-wiener-on-his-controversial-ai-bill--sb-1047
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2024-08 Lawfare Daily, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://sd11.senate.ca.gov/news/senator-wiener-responds-governor-newsom-vetoing-landmark-ai-bill
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: post
+      tier: 1
+      note: 2024-09 own official statement on the SB 1047 veto, plus bill background
+      status: verified 2026-09-30
+    - url: https://sd11.senate.ca.gov/news/senator-wiener-expands-ai-bill-landmark-transparency-measure-based-recommendations-governors
+      kind: article
+      authored_by_subject: false
+      language: en
+      source_type: post
+      tier: 1
+      note: 2025-07 office press release on SB 53; contains his quoted statement but most text is bill description
+      status: verified 2026-09-30
+    - url: https://capitolweekly.net/senator-scott-wiener-california-and-ai/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 2
+      note: 2025-07 Capitol Weekly podcast, transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://www.lawfaremedia.org/article/scaling-laws--sen.-scott-wiener-on-california-senate-bill-53
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2025-10 Lawfare Scaling Laws on SB 53, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+  masayoshi-son:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://group.softbank/en/ir/financials/annual_reports/2021/message/son
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2021 annual report CEO message, first person (official English)
+      status: verified 2026-09-30
+    - url: https://group.softbank/en/ir/financials/annual_reports/2022/message/son
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2022 annual report CEO message, first person
+      status: verified 2026-09-30
+    - url: https://group.softbank/en/ir/financials/annual_reports/2023/message/son
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2023 annual report CEO message, turn to AI / "architect" of the future
+      status: verified 2026-09-30
+    - url: https://group.softbank/en/ir/financials/annual_reports/2024/message/son
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2024 annual report CEO message, ASI mission
+      status: verified 2026-09-30
+    - url: https://group.softbank/en/ir/financials/annual_reports/2025/message/son
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: letter
+      tier: 1
+      note: 2025 annual report CEO message, ASI platform strategy
+      status: verified 2026-09-30
+    - url: https://news.qq.com/rain/a/20240624A01VY800
+      kind: article
+      authored_by_subject: true
+      language: zh
+      source_type: talk
+      tier: 2
+      note: 2024-06 44th AGM speech, Chinese translation of the full speech (third-party translation, not official)
+      status: verified 2026-09-30
+    - url: https://www.softbank.jp/business/content/blog/202410/sbw2024-softbank-son-main-keynote
+      kind: article
+      authored_by_subject: false
+      language: ja
+      source_type: talk
+      tier: 1
+      note: 2024-10 SoftBank World 2024 keynote, official company report with long verbatim quotes, not a full transcript
+      status: verified 2026-09-30
+    - url: https://www.softbank.jp/business/content/blog/202607/sbw2026-softbank-son-main-keynote
+      kind: article
+      authored_by_subject: false
+      language: ja
+      source_type: talk
+      tier: 1
+      note: 2026-07 SoftBank World 2026 keynote (ASI Economy 2040), official company report with long verbatim quotes
+      status: verified 2026-09-30
+  ben-horowitz:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://a16z.com/politics-and-the-future/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-12 own a16z post on tech policy and political giving, AI is one of several topics (~2.8k chars)
+      status: verified 2026-09-30
+    - url: https://a16z.com/the-little-tech-agenda/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2024-07 co-authored with Marc Andreessen; same URL listed under marc-andreessen
+      status: verified 2026-09-30
+    - url: https://theinnermostloop.substack.com/p/a-conversation-with-ben-horowitz
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: interview
+      tier: 2
+      note: 2026-02 Substack interview, condensed topic-by-topic Q&A (~9k chars); interview Q&A
+      status: verified 2026-09-30
+  marc-andreessen:
+    tier: 1
+    authored_by_subject: true
+    seeds:
+    - url: https://pmarca.substack.com/p/why-ai-wont-cause-unemployment
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-03 own Substack essay
+      status: verified 2026-09-30
+    - url: https://a16z.com/ai-will-save-the-world/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-06 own essay "Why AI Will Save the World" (also at pmarca.substack.com/p/why-ai-will-save-the-world)
+      status: verified 2026-09-30
+    - url: https://www.dwarkesh.com/p/marc-andreessen
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2023-02 Dwarkesh Podcast, full transcript on page; interview Q&A
+      status: verified 2026-09-30
+    - url: https://a16z.com/the-techno-optimist-manifesto/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2023-10 own manifesto
+      status: verified 2026-09-30
+    - url: https://conversationswithtyler.com/episodes/marc-andreessen-2/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: 2024 Conversations with Tyler at American Dynamism Summit, full transcript; interview Q&A
+      status: verified 2026-09-30
+    - url: https://a16z.com/the-little-tech-agenda/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: essay
+      tier: 1
+      note: 2024-07 co-authored with Ben Horowitz
+      status: verified 2026-09-30
+    - url: https://lexfridman.com/marc-andreessen-2-transcript
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 1
+      note: '2025-01 Lex Fridman #458 official transcript (~295k chars); interview Q&A'
+      status: verified 2026-09-30
+    - url: https://conversationswithtyler.com/episodes/marc-andreessen/
+      kind: article
+      authored_by_subject: true
+      language: en
+      source_type: podcast
+      tier: 2
+      note: c.2018 Conversations with Tyler, full transcript; earlier baseline, AI is a minor topic; interview Q&A
+      status: verified 2026-09-30
