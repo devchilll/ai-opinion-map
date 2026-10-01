@@ -262,15 +262,62 @@ events:
   verified: true
   blocked_sources:
   - https://openai.com/index/hugging-face-model-evaluation-security-incident/
+- id: jev-release
+  date: 2026-09-15
+  title: TypeSafe AI releases Jev, a model that answers without generating text
+  summary: 'Jev enters limited early access as the first public "System One" model: it returns typed values
+    with probabilities and confidence scores instead of prose, priced far below large language models.
+    TypeSafe AI announces a $40 million seed round the same day.'
+  category: Models
+  importance: 3
+  people: []
+  sources:
+  - https://en.wikipedia.org/wiki/Jev_(AI_model)
+  - https://www.datacamp.com/blog/system-one-models-jev
+  - https://www.digitalocean.com/resources/articles/what-is-jev
+  verified: true
+- id: xiaomi-live-rl
+  date: 2026-09-15
+  title: Xiaomi livestreams the training of MiMo-V2.6 Pro and Flash
+  summary: Xiaomi runs the reinforcement-learning stage of its next two models in public, with a dashboard
+    streaming reward curves, rollout counts, running compute cost and mid-training coding scores while
+    the runs are still in progress.
+  category: Models
+  importance: 3
+  people: []
+  sources:
+  - https://technode.com/2026/09/18/xiaomi-livestreams-mimo-v2-6-reinforcement-learning-runs/
+  - https://pandaily.com/xiaomi-mimo-v2-6-rl-training-livestream-dashboard
+  - https://en.wikipedia.org/wiki/Xiaomi_MiMo
+  verified: true
 - id: ban-asi-act
-  date: 2026-09-03
+  date: 2026-09-23
   title: Ban Artificial Superintelligence Act introduced
-  summary: Senator Bernie Sanders and Representative Greg Casar introduce a bill proposing a pause on
-    domestic frontier AI development.
+  summary: Senator Bernie Sanders and Representative Greg Casar introduce a bill that would ban artificial
+    superintelligence, pause advanced AI development until a new federal Department of Artificial Intelligence
+    is running, and set prison terms of up to 20 years for violations.
   category: Policy
   importance: 4
   people: []
   sources:
-  - https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks
-  - https://techcrunch.com/2026/08/10/as-ai-led-attacks-multiply-openai-launches-a-new-cyber-model/
+  - https://casar.house.gov/media/press-releases/news-casar-sanders-introduce-legislation-create-new-federal-agency-ban
+  - https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-ban-artificial-superintelligence-and-temporarily-pause-advanced-ai-development/
+  - https://www.democracynow.org/2026/9/24/headlines/sen_bernie_sanders_and_rep_greg_casar_introduce_ban_artificial_superintelligence_act
   verified: true
+- id: si-executive-order
+  date: 2026-09-29
+  title: White House orders agencies to say "Super Intelligence" instead of "AI"
+  summary: President Trump signs an executive order directing the executive branch to use "Super Intelligence"
+    and "SI" in place of "Artificial Intelligence" and "AI" in official documents, and to propose a federal
+    definition of the term within 60 days. Existing regulations and contracts are not changed.
+  category: Policy
+  importance: 4
+  people:
+  - donald-trump
+  sources:
+  - https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/
+  - https://www.cnbc.com/2026/09/29/trump-ai-super-intelligence.html
+  - https://www.theregister.com/ai-and-ml/2026/09/30/trump-decrees-era-of-super-intelligence-upon-us/5300213
+  verified: true
+  blocked_sources:
+  - https://www.theregister.com/ai-and-ml/2026/09/30/trump-decrees-era-of-super-intelligence-upon-us/5300213

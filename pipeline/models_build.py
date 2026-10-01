@@ -192,6 +192,20 @@ def build() -> dict:
         })
     releases.sort(key=lambda p: p["d"])
 
+    # One entry per (organisation, day): a lab shipping four sizes of one
+    # model on one day made one release, not four.
+    FOUNDATION = {"Language", "Multimodal", "Vision", "Image generation", "Video", "Speech", "Audio"}
+    days: dict[tuple[str, str], dict] = {}
+    for src in (
+        [(p["org"], p["lab"], p["d"], p["m"]) for p in eci],
+        [(r["org"], r["lab"], r["d"], r["m"]) for r in releases if FOUNDATION & set(r["domains"])],
+    ):
+        for org, lab, d, m in src:
+            e = days.setdefault((org, d), {"lab": lab, "org": org, "d": d, "names": []})
+            if m not in e["names"]:
+                e["names"].append(m)
+    cadence = sorted(days.values(), key=lambda e: e["d"])
+
     manifest = json.loads((RAW / "manifest.json").read_text()) if (RAW / "manifest.json").exists() else {}
     return {
         "generated": date.today().isoformat(),
@@ -207,6 +221,7 @@ def build() -> dict:
         "eci": eci,
         "horizon": horizon,
         "releases": releases,
+        "cadence": cadence,
     }
 
 

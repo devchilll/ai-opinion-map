@@ -21,7 +21,10 @@ export type Models = {
   eci: Eci[];
   horizon: Hz[];
   releases: Release[];
+  cadence: Cadence[];
 };
+type Cadence = { lab: string; org: string; d: string; names: string[] };
+export type Milestone = { id: string; date: string; title: string; summary: string; category: string; sources: string[] };
 
 /* ---------- palette: fixed lab order, validated on the dark surface ---------- */
 const LAB: Record<string, string> = {
@@ -105,6 +108,97 @@ function YearAxis({ x, t0, t1, y0, y1, short }: { x: (v: number) => number; t0: 
         );
       })}
     </g>
+  );
+}
+
+/* ---------- 0. release cadence ---------- */
+function CadenceChart({ data, labs, events, ctx, end }: { data: Cadence[]; labs: { id: string; name: string }[]; events: Milestone[]; ctx: Ctx; end: string }) {
+  const [ref, W] = useWidth<HTMLDivElement>();
+  const narrow = W < 620;
+  const L = narrow ? 74 : 96, R = 12, ROW = 26, TOP = 34;
+  const t0 = T("2017-01-01"), t1 = T(end);
+  const x = lin(t0, t1, L, W - R);
+  const lanes = labs;
+  const H = TOP + lanes.length * ROW + 22;
+  const vis = data.filter((c) => c.d <= ctx.cutoff);
+  const evs = events.filter((e) => e.date <= ctx.cutoff);
+
+  // releases per calendar year from the tracked labs, and the gap that implies
+  const years: number[] = [];
+  for (let y = 2017; y <= +ctx.cutoff.slice(0, 4); y++) years.push(y);
+  const per = years.map((yr) => {
+    const n = vis.filter((c) => c.lab !== "other" && (!ctx.focus || c.lab === ctx.focus) && +c.d.slice(0, 4) === yr).length;
+    const from = Date.UTC(yr, 0, 1), to = Math.min(Date.UTC(yr + 1, 0, 1), T(ctx.cutoff.slice(0, 8) + "28") + 3 * 864e5);
+    const days = Math.max(1, (to - from) / 864e5);
+    return { yr, n, every: n ? days / n : null, partial: to < Date.UTC(yr + 1, 0, 1) };
+  });
+  const allYears: number[] = [];
+  for (let y = 2017; y <= +end.slice(0, 4); y++) allYears.push(y);
+  const BH = 150, bw = (W - L - R) / allYears.length;
+  const maxRate = Math.max(...per.map((p) => (p.every ? 365 / p.every : 0)), 1);
+  const by = lin(0, maxRate, BH - 22, 26);
+  return (
+    <div ref={ref} className="w-full overflow-hidden">
+      <svg width={W} height={H} role="img" aria-label="Model releases by lab over time">
+        <YearAxis x={x} t0={t0} t1={t1} y0={TOP - 6} y1={H - 22} short={narrow} />
+        <text x={L - 10} y={18} textAnchor="end" fill={INK2} fontSize={11.5}>Milestones</text>
+        {evs.map((e) => (
+          <g key={e.id} transform={`translate(${x(T(e.date))},14)`}
+            onMouseMove={(m) => ctx.setTip({ x: m.clientX, y: m.clientY, title: e.title, rows: [["When", fmtDate(e.date)], ["What", e.summary]] })}
+            onMouseLeave={() => ctx.setTip(null)}>
+            <rect x={-9} y={-9} width={18} height={18} fill="transparent" />
+            <rect x={-4} y={-4} width={8} height={8} transform="rotate(45)" fill={INK} stroke="#03070c" strokeWidth={1.5} />
+          </g>
+        ))}
+        {lanes.map((l, i) => {
+          const yy = TOP + i * ROW;
+          return (
+            <g key={l.id} opacity={ctx.focus && ctx.focus !== l.id ? 0.18 : 1}>
+              <text x={L - 10} y={yy + 17} textAnchor="end" fill={INK2} fontSize={11.5}>{l.name}</text>
+              <rect x={L} y={yy + 3} width={W - R - L} height={ROW - 6} fill="#0a141e" rx={2} />
+              {vis.filter((c) => c.lab === l.id).map((c, k) => (
+                <g key={k}
+                  onMouseMove={(m) => ctx.setTip({
+                    x: m.clientX, y: m.clientY, title: c.names.slice(0, 3).join(", ") + (c.names.length > 3 ? ` +${c.names.length - 3}` : ""),
+                    lab: c.lab, rows: [["Released", `${+c.d.slice(8)} ${fmtDate(c.d)}`], ["By", c.org]],
+                  })}
+                  onMouseLeave={() => ctx.setTip(null)}>
+                  <rect x={x(T(c.d)) - 4} y={yy + 3} width={8} height={ROW - 6} fill="transparent" />
+                  <rect x={x(T(c.d)) - 1} y={yy + 5} width={2} height={ROW - 10} fill={LAB[l.id]} />
+                </g>
+              ))}
+            </g>
+          );
+        })}
+      </svg>
+      <div className="mt-6 text-[13px] font-semibold text-slate-200">
+        Releases per year{ctx.focus ? ` · ${ctx.labName(ctx.focus)}` : " · the eight named labs"}
+      </div>
+      <svg width={W} height={BH} role="img" aria-label="Releases per year and the average gap between them">
+        <line x1={L} x2={W - R} y1={BH - 22} y2={BH - 22} stroke={GRID} />
+        {allYears.map((yr, j) => {
+          const p = per.find((q) => q.yr === yr);
+          const cx = L + j * bw + bw / 2, w = Math.min(46, bw - 10);
+          const rate = p?.every ? 365 / p.every : 0;
+          return (
+            <g key={yr}>
+              <text x={cx} y={BH - 6} textAnchor="middle" fill={MUTED} fontSize={11}>{narrow ? `'${String(yr).slice(2)}` : yr}</text>
+              {p && p.n > 0 && (
+                <g onMouseMove={(m) => ctx.setTip({
+                    x: m.clientX, y: m.clientY, title: String(yr),
+                    rows: [["Releases", `${p.n}${p.partial ? " so far" : ""}`], ["On average", `one every ${p.every!.toFixed(p.every! < 10 ? 1 : 0)} days`]],
+                  })} onMouseLeave={() => ctx.setTip(null)}>
+                  <path d={`M${cx - w / 2},${BH - 22}V${by(rate) + 4}q0,-4 4,-4h${w - 8}q4,0 4,4V${BH - 22}z`} fill="#3987e5" opacity={p.partial ? 0.6 : 1} />
+                  <text x={cx} y={by(rate) - 6} textAnchor="middle" fill={INK} fontSize={narrow ? 10 : 11.5} fontWeight={600}>
+                    {narrow ? `${p.every!.toFixed(0)}d` : `every ${p.every!.toFixed(p.every! < 10 ? 1 : 0)} days`}
+                  </text>
+                </g>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 }
 
@@ -428,9 +522,9 @@ function Modalities({ releases, ctx, end }: { releases: Release[]; ctx: Ctx; end
 }
 
 /* ---------- page ---------- */
-export default function ModelTrack({ data }: { data: Models }) {
+export default function ModelTrack({ data, events = [] }: { data: Models; events?: Milestone[] }) {
   const end = useMemo(() => {
-    const last = data.eci.reduce((a, p) => (p.d > a ? p.d : a), data.generated);
+    const last = data.eci.reduce((a, p) => (p.d > a ? p.d : a), "2017-01-01");
     return last.slice(0, 7) + "-" + String(new Date(Date.UTC(+last.slice(0, 4), +last.slice(5, 7), 0)).getUTCDate());
   }, [data]);
   const ms = useMemo(() => months("2017-01", end), [end]);
@@ -532,6 +626,12 @@ export default function ModelTrack({ data }: { data: Models }) {
             </span>
           ))}
         </div>
+
+        <Section title="New models, faster and faster"
+          sub="Each tick is a day on which a lab released a model. Diamonds mark milestones; hover for what happened. The bars below turn the same ticks into a pace: how many days passed, on average, between one release and the next."
+          note="A release is one lab shipping on one day, however many sizes or variants it shipped. Bar height is releases per year; a partial year is scaled to a full one and drawn lighter.">
+          <CadenceChart data={data.cadence} labs={data.labs.filter((l) => l.id !== "other")} events={events} ctx={ctx} end={end} />
+        </Section>
 
         <Section title="Every benchmark gets beaten"
           sub="One row per benchmark. A row lights up as the best available model solves more of it. New benchmarks keep appearing at the bottom of each group because the old ones stop being hard."
