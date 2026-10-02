@@ -133,12 +133,13 @@ function Node({ p, i, onPick, selected, dim }: {
         <meshStandardMaterial
           color={selected ? "#ffffff" : color}
           emissive={selected ? "#5a8ba8" : color} emissiveIntensity={selected ? 1.1 : 0.45}
-          transparent opacity={dim ? 0.2 : sparse ? 0.5 : 0.97}
+          transparent opacity={dim ? 0.2 : sparse || c.free.length ? 0.55 : 0.97}
         />
       </mesh>
 
-      {/* Structurally undefined axis: a bar through that dimension, never a point. */}
-      {c.free.map((a) => {
+      {/* An axis with no evidence: the node sits at its midpoint, drawn fainter.
+          The bar that says "could be anywhere along here" shows only on selection. */}
+      {selected && c.free.map((a) => {
         const k = ACTIVE.indexOf(a as AxisKey);
         const dir: [number, number, number] = k === 0 ? [L, 0, 0] : k === 1 ? [0, L, 0] : [0, 0, L];
         const seg: [number, number, number][] = [
