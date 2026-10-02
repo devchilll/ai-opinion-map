@@ -65,15 +65,17 @@ function coords(p: Person, i: number, active: Active = ACTIVE):
   { pos: [number, number, number]; free: string[] } | null {
   const out: number[] = [];
   const free: string[] = [];
+  let known = 0;
   for (const a of active) {
     if (a === null) { out.push(0); continue; }               // flattened dimension in a 2D view
-    if (!p.axes_allowed.includes(a)) { out.push(0); free.push(a); continue; }
-    const cell = p.axes[a]?.[i];
-    if (!cell) return null;                                  // allowed but under-evidenced
+    const cell = p.axes_allowed.includes(a) ? p.axes[a]?.[i] : null;
+    // No evidence on this axis: draw a bar through it rather than a false point.
+    if (!cell) { out.push(0); free.push(a); continue; }
     out.push(cell[0] * SCALE);
+    known++;
   }
-  const applicable = active.filter((a) => a !== null && p.axes_allowed.includes(a));
-  if (applicable.length === 0) return null;                  // nothing to say in this view
+  // Two known axes place someone on a line; one alone says too little to draw.
+  if (known < 2) return null;
   return { pos: [out[0], out[1], out[2]], free };
 }
 
@@ -85,8 +87,8 @@ function missingAxes(p: Person, i: number, active: Active = ACTIVE): string[] {
 /** Nearest month where this person renders, or null. */
 function nearestVisibleMonth(p: Person, i: number, total: number): number | null {
   for (let d = 1; d < total; d++) {
-    if (i + d < total && missingAxes(p, i + d).length === 0) return i + d;
-    if (i - d >= 0 && missingAxes(p, i - d).length === 0) return i - d;
+    if (i + d < total && coords(p, i + d)) return i + d;
+    if (i - d >= 0 && coords(p, i - d)) return i - d;
   }
   return null;
 }
@@ -302,7 +304,7 @@ export default function BeliefMap({ data }: { data: Positions }) {
         )}
       </header>
 
-      <div className="absolute left-7 top-[11rem] z-30 w-72">
+      <div className="absolute left-7 top-[14.5rem] z-30 w-72">
         <div className="mb-2 flex flex-wrap gap-1 rounded-md border border-slate-700/80 bg-slate-900/70 p-0.5 text-[11px]">
           {Object.entries(VIEWS).map(([k, v]) => (
             <button key={k} onClick={() => { setView(k as keyof typeof VIEWS); setPicked(null); }}
@@ -322,16 +324,19 @@ export default function BeliefMap({ data }: { data: Positions }) {
                           bg-slate-900/80 p-2 text-[11px]">
             {searchHits.length === 0 && <p className="text-slate-500">no one by that name</p>}
             {searchHits.slice(0, 6).map((hit) => {
-              const miss = missingAxes(hit, i);
-              const jump = miss.length ? nearestVisibleMonth(hit, i, data.months.length) : null;
+              const miss = missingAxes(hit, i, active);
+              const shown = !!coords(hit, i, active);
+              const jump = shown ? null : nearestVisibleMonth(hit, i, data.months.length);
               return (
                 <div key={hit.id}>
                   <button onClick={() => { setPicked(hit); if (jump !== null) setI(jump); }}
                           className="text-left text-slate-200 hover:underline">
                     {hit.name}
                   </button>
-                  {miss.length === 0 ? (
-                    <span className="ml-1.5 text-slate-500">on the map</span>
+                  {shown ? (
+                    <span className="ml-1.5 text-slate-500">
+                      on the map{miss.length > 0 && ` · no evidence yet on ${miss.map((a) => data.axes[a].label.toLowerCase()).join(", ")}`}
+                    </span>
                   ) : (
                     <span className="ml-1.5 text-amber-600/90">
                       hidden — no evidence for{" "}
@@ -400,6 +405,27 @@ export default function BeliefMap({ data }: { data: Positions }) {
         <OrbitControls enablePan={false} enableRotate={!is2d} autoRotate={spin && !picked && !is2d}
                        autoRotateSpeed={0.22} minDistance={8} maxDistance={34} />
       </Canvas>
+
+      {visible.length === 0 && (() => {
+        const first = data.months.findIndex((_, k) => headline.some((p) => coords(p, k, active)));
+        return (
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            <div className="pointer-events-auto max-w-sm rounded-lg border border-slate-700 bg-[#070d15]/95 p-5 text-center">
+              <p className="text-[15px] font-semibold text-slate-100">No one can be placed in {month}</p>
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-slate-400">
+                A person appears once two dated, first-person sources support a position on at least two of these axes.
+                {first >= 0 ? ` The earliest month that meets that bar is ${data.months[first]}.` : " No month meets that bar in this view yet."}
+              </p>
+              {first >= 0 && (
+                <button onClick={() => setI(first)}
+                        className="mt-3 rounded-full border border-sky-400/60 px-4 py-1.5 text-[13px] font-semibold text-sky-100 hover:bg-sky-400/15">
+                  Jump to {data.months[first]}
+                </button>
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
       <div className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-[#03070c]
                       via-[#03070c]/85 to-transparent px-7 pb-5 pt-16">
